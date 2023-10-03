@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { getRestaurants } from '../../store/restaurants'
 
+
 const AllRestaurants = () => {
     const dispatch = useDispatch()
     const restaurants = useSelector( state => state.restaurants.allRestaurants)

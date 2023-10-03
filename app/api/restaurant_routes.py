@@ -11,3 +11,13 @@ def get_all_restaurants():
     """
     all_restaurants = Restaurant.query.all()
     return {'restaurants': [restaurant.to_dict() for restaurant in all_restaurants]}
+
+@restaurant_routes.route('/<restaurant_id>')
+def get_one_restaurant(restaurant_id):
+    """
+    Get one restaurant
+    """
+    restaurant = Restaurant.query.where(Restaurant.id == restaurant_id).first()
+
+    print("----------------------",restaurant)
+    return restaurant.to_dict()
