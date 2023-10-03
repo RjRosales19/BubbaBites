@@ -38,6 +38,20 @@ export const getSelectedRestaurant = (restaurantId) => async (dispatch) => {
     }
 }
 
+export const createRestaurant = (restaurant) => async (dispatch) => {
+    const res = await fetch('/api/restaurants', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(restaurant)
+    })
+    if(res.ok){
+        const data = await res.json()
+        dispatch(getSingleRestaurant(data.id))
+        return data
+    }
+}
+
+
 const initialState = { allRestaurants:{}, singleRestaurant: {}}
 // Restaurant Reducer
 export default function restaurantReducer  ( state = initialState, action)  {
