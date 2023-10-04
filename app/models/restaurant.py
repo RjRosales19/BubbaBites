@@ -13,7 +13,7 @@ class Restaurant(db.Model):
     address = db.Column(db.String)
     city = db.Column(db.String)
     state = db.Column(db.String)
-    hours = db.Column(db.Integer)
+    hours = db.Column(db.String)
     image_url = db.Column(db.String)
 
     def to_dict(self):
