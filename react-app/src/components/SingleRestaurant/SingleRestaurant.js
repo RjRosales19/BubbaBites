@@ -6,19 +6,23 @@ import UpdateRestaurantForm from '../UpdateRestaurantForm/UpdateRestaurantForm'
 import DeleteRestaurant from '../DeleteRestaurant/DeleteRestaurant'
 import OpenModalButton from "../OpenModalButton"
 import { getAllReviews } from "../../store/reviews"
+import CreateReviewForm from "../CreateReviewForm/CreateReviewForm"
 
 const SingleRestaurant = () => {
     const dispatch = useDispatch()
     const { restaurantId } = useParams()
+    const user = useSelector( state=> state.session.user)
     const restaurant = useSelector( state => state.restaurants.singleRestaurant )
     const reviews = useSelector( state => state.reviews.allReviews)
-    console.log(reviews)
-    useEffect( async () => {
+    console.log(Object.values(reviews))
+
+    useEffect(async () => {
         await dispatch(getSelectedRestaurant(restaurantId))
         await dispatch(getAllReviews(restaurantId))
     }, [dispatch])
 
-    if(!reviews.length) return null
+    // if(!restaurant) return null
+
     return(
         <>
             <div>
@@ -35,16 +39,28 @@ const SingleRestaurant = () => {
                     buttonText="Delete Restaurant"
                     modalComponent={<DeleteRestaurant restaurant={restaurant}/>}
                     />
+
+                <div>
+                    <OpenModalButton
+                    buttonText="Create a Review"
+                    modalComponent={<CreateReviewForm />}
+                    />
+                </div>
             {reviews.length ?
             <div>
-                {reviews.map((review) => {
-                    <div> {review.star_rating}</div>
-                    console.log(review.star_rating)
-                    // <div>{review.star_rating}</div>
+                {reviews.map((review) => { return(
+                    <div>
+                        <div>{user.username}</div>
+                        <div>{review.star_rating}</div>
+                        <div>{review.text}</div>
+                        <div>{review.created_at}</div>
+                    </div>
+                    )
                 }
                 )}
             </div>
             : null }
+
             </div>
         </>
     )
