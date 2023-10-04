@@ -21,20 +21,20 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path="/restaurants/new">
+            <CreateRestaurantForm />
+          </Route>
+          <Route exact path="/restaurants/:restaurantId">
+            <SingleRestaurant />
+          </Route>
+          <Route exact path="/restaurants">
+            <AllRestaurants />
+          </Route>
           <Route path="/login" >
             <LoginFormPage />
           </Route>
           <Route path="/signup">
             <SignupFormPage />
-          </Route>
-          <Route exact path="/restaurants/new">
-            <CreateRestaurantForm />
-          </Route>
-          <Route exact path="/restaurants">
-            <AllRestaurants />
-          </Route>
-          <Route exact path="/restaurants/:restaurantId">
-            <SingleRestaurant />
           </Route>
         </Switch>
       )}

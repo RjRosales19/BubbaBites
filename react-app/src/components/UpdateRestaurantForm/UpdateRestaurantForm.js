@@ -1,21 +1,22 @@
-import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { createRestaurant } from '../../store/restaurants';
+import { useState } from "react"
+import { useHistory } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+import { updateRestaurant } from "../../store/restaurants"
 
 
-const CreateRestaurantForm = () => {
+const UpdateRestaurantForm = () => {
     const history = useHistory()
     const dispatch = useDispatch()
     const userId = useSelector( state => state.session.user.id)
-    const [ name, setName ] = useState('')
-    const [ address, setAddress ] = useState('')
-    const [ state, setState ] = useState('')
-    const [ city, setCity ] = useState('')
-    const [ hours, setHours ] = useState('')
-    const [ imageUrl , setImageUrl ] = useState('')
+    const updatedRestaurant = useSelector( state => state.restaurants.singleRestaurant)
+    const [ name, setName ] = useState(updatedRestaurant.name)
+    const [ address, setAddress ] = useState(updatedRestaurant.address)
+    const [ state, setState ] = useState(updatedRestaurant.state)
+    const [ city, setCity ] = useState(updatedRestaurant.city)
+    const [ hours, setHours ] = useState(updatedRestaurant.hours)
+    const [ imageUrl , setImageUrl ] = useState(updatedRestaurant.image_url)
 
-    const handleCreateRestaurant = async (e) => {
+    const handleUpdateRestaurant = async (e) => {
         e.preventDefault()
 
         const payload = {
@@ -27,18 +28,21 @@ const CreateRestaurantForm = () => {
             hours: hours,
             image_url: imageUrl
         }
-        const res = await dispatch(createRestaurant(payload))
-        // if(res){
-            history.push(`/restaurants/${res.id}`)
-        // }
+        console.log("PAYLOAD", payload)
+        console.log("UPDATED RESTAURANT",updatedRestaurant)
+        const res = await dispatch(updateRestaurant(payload, updatedRestaurant.id))
+        if(res){
+            history.push(`/restaurants/${updatedRestaurant.id}`)
+        }
     }
+
     return(
         <>
         <div>
-            Create a Restaurant
+            Update a Restaurant
         </div>
 
-        <form onSubmit={handleCreateRestaurant}>
+        <form onSubmit={handleUpdateRestaurant}>
             <label>Name
                 <input
                 type="text"
@@ -81,10 +85,10 @@ const CreateRestaurantForm = () => {
                 onChange={ (e) => setImageUrl(e.target.value)}
                 />
             </label>
-            <button type="submit">Create new Restaurant</button>
+            <button type="submit">Update Restaurant</button>
         </form>
         </>
     )
 }
 
-export default CreateRestaurantForm
+export default UpdateRestaurantForm
