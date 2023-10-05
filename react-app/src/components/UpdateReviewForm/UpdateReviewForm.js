@@ -39,12 +39,14 @@ const UpdateReviewForm = ({ review }) => {
                 <input
                 type="text"
                 value={text}
+                required
                 onChange={(e) => setText(e.target.value)}
                 />
                 <label>Rating:</label>
                 <input
                 type="number"
                 value={starRating}
+                required
                 onChange={(e) => setStarRating(e.target.value)}
                 />
                 <button type="submit">Update Review</button>

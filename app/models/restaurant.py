@@ -16,7 +16,8 @@ class Restaurant(db.Model):
     hours = db.Column(db.String)
     image_url = db.Column(db.String)
 
-    user = db.relationship('User', back_populates='restaurants')
+    user = db.relationship('User', back_populates='restaurant')
+    review = db.relationship('Review', back_populates='restaurant', cascade='all, delete-orphan')
 
     def to_dict(self):
         return {

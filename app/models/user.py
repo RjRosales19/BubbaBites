@@ -14,8 +14,8 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    restaurants = db.relationship('Restaurant', back_populates='user', cascade='all')
-    # reviews = db.relationship('Review', back_populates='user', cascade='all')
+    restaurant = db.relationship('Restaurant', back_populates='user', cascade='all, delete-orphan')
+    review = db.relationship('Review', back_populates='user', cascade='all, delete-orphan')
 
     @property
     def password(self):
