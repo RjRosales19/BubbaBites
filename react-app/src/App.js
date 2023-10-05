@@ -30,6 +30,9 @@ function App() {
           <Route exact path="/restaurants">
             <AllRestaurants />
           </Route>
+          <Route>
+            
+          </Route>
           <Route path="/login" >
             <LoginFormPage />
           </Route>

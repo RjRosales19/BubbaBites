@@ -7,7 +7,8 @@ import DeleteRestaurant from '../DeleteRestaurant/DeleteRestaurant'
 import OpenModalButton from "../OpenModalButton"
 import { getAllReviews } from "../../store/reviews"
 import CreateReviewForm from "../CreateReviewForm/CreateReviewForm"
-
+import UpdateReviewForm from '../UpdateReviewForm/UpdateReviewForm'
+import DeleteReview from "../DeleteReview/DeleteReview"
 const SingleRestaurant = () => {
     const dispatch = useDispatch()
     const { restaurantId } = useParams()
@@ -54,6 +55,14 @@ const SingleRestaurant = () => {
                         <div>{review.star_rating}</div>
                         <div>{review.text}</div>
                         <div>{review.created_at}</div>
+                        <OpenModalButton
+                            buttonText='Edit Review'
+                            modalComponent={<UpdateReviewForm review={review}/>}
+                        />
+                        <OpenModalButton
+                            buttonText='Delete Review'
+                            modalComponent={<DeleteReview review={review}/>}
+                        />
                     </div>
                     )
                 }
