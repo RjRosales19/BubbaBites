@@ -6,7 +6,7 @@ const DeleteRestaurant = ({ restaurant }) => {
     const dispatch = useDispatch()
     const history = useHistory()
     console.log(restaurant)
-    
+
     const handleDeleteRestaurant = async (e) => {
         e.preventDefault()
         await dispatch(deleteRestaurant(restaurant.id))
