@@ -8,6 +8,7 @@ import SingleRestaurant from "./components/SingleRestaurant/SingleRestaurant";
 import CreateRestaurantForm from "./components/CreateRestaurantForm/CreateRestaurantForm";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
+import ManageRestaurants from "./components/ManageRestaurants/ManageRestaurants";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +25,9 @@ function App() {
           <Route exact path="/restaurants/new">
             <CreateRestaurantForm />
           </Route>
+          <Route exact path='/restaurants/owned'>
+            <ManageRestaurants />
+          </Route>
           <Route exact path="/restaurants/:restaurantId">
             <SingleRestaurant />
           </Route>
@@ -31,7 +35,6 @@ function App() {
             <AllRestaurants />
           </Route>
           <Route>
-            
           </Route>
           <Route path="/login" >
             <LoginFormPage />
