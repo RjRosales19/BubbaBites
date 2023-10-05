@@ -15,7 +15,7 @@ const SingleRestaurant = () => {
     const user = useSelector( state=> state.session.user)
     const restaurant = useSelector( state => state.restaurants.singleRestaurant )
     const reviews = useSelector( state => state.reviews.allReviews)
-    console.log(Object.values(reviews))
+    console.log(Object.values(reviews).reverse())
 
     useEffect(async () => {
         await dispatch(getSelectedRestaurant(restaurantId))
@@ -28,6 +28,7 @@ const SingleRestaurant = () => {
         <>
             <div>
                 <h2>{ restaurant.name }</h2>
+                <div><img alt={`${restaurant.name}`} src={ restaurant.image_url }/></div>
                 <div>{ restaurant.address }</div>
                 <div>{ restaurant.city }</div>
                 <div>{ restaurant.state }</div>
@@ -66,7 +67,7 @@ const SingleRestaurant = () => {
                     </div>
                     )
                 }
-                )}
+                ).reverse()}
             </div>
             : null }
 

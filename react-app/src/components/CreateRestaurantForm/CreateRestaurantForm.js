@@ -43,6 +43,7 @@ const CreateRestaurantForm = () => {
                 <input
                 type="text"
                 value={name}
+                required
                 onChange={ (e) => setName(e.target.value)}
                 />
             </label>
@@ -50,6 +51,7 @@ const CreateRestaurantForm = () => {
                 <input
                 type="text"
                 value={address}
+                required
                 onChange={ (e) => setAddress(e.target.value)}
                 />
             </label>
@@ -57,6 +59,7 @@ const CreateRestaurantForm = () => {
                 <input
                 type="text"
                 value={state}
+                required
                 onChange={ (e) => setState(e.target.value)}
                 />
             </label>
@@ -64,6 +67,7 @@ const CreateRestaurantForm = () => {
                 <input
                 type="text"
                 value={city}
+                required
                 onChange={ (e) => setCity(e.target.value)}
                 />
             </label>
@@ -71,6 +75,7 @@ const CreateRestaurantForm = () => {
                 <input
                 type="text"
                 value={hours}
+                required
                 onChange={ (e) => setHours(e.target.value)}
                 />
             </label>
@@ -78,6 +83,7 @@ const CreateRestaurantForm = () => {
                 <input
                 type="url"
                 value={imageUrl}
+                required
                 onChange={ (e) => setImageUrl(e.target.value)}
                 />
             </label>
