@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { getRestaurants } from '../../store/restaurants'
 import { Link } from 'react-router-dom'
-import './allRestaurants.css'
+import './AllRestaurants.css'
 
 const AllRestaurants = () => {
     const dispatch = useDispatch()

@@ -1,0 +1,4 @@
+.single-restaurant-container{
+    display:flex;
+    border: 1px dashed black
+}

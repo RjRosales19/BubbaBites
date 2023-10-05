@@ -9,6 +9,8 @@ import { getAllReviews } from "../../store/reviews"
 import CreateReviewForm from "../CreateReviewForm/CreateReviewForm"
 import UpdateReviewForm from '../UpdateReviewForm/UpdateReviewForm'
 import DeleteReview from "../DeleteReview/DeleteReview"
+import './SingleRestaurant.css'
+
 const SingleRestaurant = () => {
     const dispatch = useDispatch()
     const { restaurantId } = useParams()
@@ -26,21 +28,25 @@ const SingleRestaurant = () => {
 
     return(
         <>
-            <div>
-                <h2>{ restaurant.name }</h2>
+            <div className="single-restaurant-container">
+                <div>
+
                 <div><img alt={`${restaurant.name}`} src={ restaurant.image_url }/></div>
+                <h2>{ restaurant.name }</h2>
                 <div>{ restaurant.address }</div>
                 <div>{ restaurant.city }</div>
                 <div>{ restaurant.state }</div>
                 <div>{ restaurant.hours }</div>
-                <OpenModalButton
+
+                </div>
+                {/* <OpenModalButton
                     buttonText="Update Restaurant"
                     modalComponent={<UpdateRestaurantForm />}
                     />
                 <OpenModalButton
                     buttonText="Delete Restaurant"
                     modalComponent={<DeleteRestaurant restaurant={restaurant}/>}
-                    />
+                    /> */}
 
                 <div>
                     <OpenModalButton

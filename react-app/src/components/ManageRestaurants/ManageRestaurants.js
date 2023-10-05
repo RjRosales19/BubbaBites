@@ -32,7 +32,7 @@ const ManageRestaurants = () => {
                         <div><img alt={`${restaurant.name}`} src={ restaurant.image_url }/></div>
                         <OpenModalButton
                         buttonText="Update Restaurant"
-                        modalComponent={<UpdateRestaurantForm />}
+                        modalComponent={<UpdateRestaurantForm restaurant={restaurant}/>}
                         />
                         <OpenModalButton
                         buttonText="Delete Restaurant"
