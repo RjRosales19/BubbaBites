@@ -70,7 +70,7 @@ const SingleRestaurant = () => {
                 {reviews.map((review) => { return(
                     <div>
                         <div>{user.username}</div>
-                        <div>{review.star_rating}</div>
+                        <div>{review.star_rating.toFixed(1)}</div>
                         <div>{review.text}</div>
                         <div>{review.created_at}</div>
                         <OpenModalButton

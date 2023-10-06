@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createReview } from '../../store/reviews';
 import { useHistory } from 'react-router-dom';
 import { useModal } from '../../context/Modal';
-
+import './CreateReviewForm.css'
 const CreateReviewForm = () => {
     const dispatch = useDispatch()
     const history = useHistory()
@@ -12,6 +12,7 @@ const CreateReviewForm = () => {
     const [ text, setText ] = useState('')
     const [ starRating, setStarRating ] = useState(0)
     const { closeModal } = useModal()
+    const [ clickStar, setClickStar ] = useState(starRating)
 
     const handleCreateReview = async (e) => {
         e.preventDefault()
@@ -42,12 +43,53 @@ const CreateReviewForm = () => {
                 onChange={(e) => setText(e.target.value)}
                 />
                 <label>Rating:</label>
-                <input
+                {/* <input
                 type="number"
                 value={starRating}
                 required
                 onChange={(e) => setStarRating(e.target.value)}
-                />
+                /> */}
+                <span
+                    className={clickStar >= 1 ? 'full' : 'blank'}
+                    onClick={(e)=> setStarRating(1)}
+                    onMouseEnter={(e)=> setClickStar(1)}
+                    onMouseLeave={(e)=> setClickStar(starRating)}
+                >
+                    <i className="fa fa-star"></i>
+                </span>
+                <span
+                    className={clickStar >= 2 ? 'full' : 'blank'}
+                    onClick={(e)=> setStarRating(2)}
+                    onMouseEnter={(e)=> setClickStar(2)}
+                    onMouseLeave={(e)=> setClickStar(starRating)}
+                >
+                    <i className="fa fa-star"></i>
+                </span>
+                <span
+                    className={clickStar >= 3 ? 'full' : 'blank'}
+                    onClick={(e)=> setStarRating(3)}
+                    onMouseEnter={(e)=> setClickStar(3)}
+                    onMouseLeave={(e)=> setClickStar(starRating)}
+                >
+                    <i className="fa fa-star"></i>
+                </span>
+                <span
+                    className={clickStar >= 4 ? 'full' : 'blank'}
+                    onClick={(e)=> setStarRating(4)}
+                    onMouseEnter={(e)=> setClickStar(4)}
+                    onMouseLeave={(e)=> setClickStar(starRating)}
+                >
+                    <i className="fa fa-star"></i>
+                </span>
+                <span
+                    className={clickStar >= 5 ? 'full' : 'blank'}
+                    onClick={(e)=> setStarRating(5)}
+                    onMouseEnter={(e)=> setClickStar(5)}
+                    onMouseLeave={(e)=> setClickStar(starRating)}
+                >
+                    <i className="fa fa-star"></i>
+                </span>
+
                 <button type="submit">Create Review</button>
             </form>
         </>
