@@ -1,7 +1,5 @@
 import { useDispatch } from "react-redux";
 import { deleteReview, getAllReviews } from "../../store/reviews";
-import { useHistory } from "react-router-dom";
-import { getSelectedRestaurant } from "../../store/restaurants";
 import { useModal } from "../../context/Modal";
 
 

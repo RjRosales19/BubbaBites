@@ -2,8 +2,6 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getSelectedRestaurant } from "../../store/restaurants"
 import { useParams } from 'react-router-dom'
-import UpdateRestaurantForm from '../UpdateRestaurantForm/UpdateRestaurantForm'
-import DeleteRestaurant from '../DeleteRestaurant/DeleteRestaurant'
 import OpenModalButton from "../OpenModalButton"
 import { getAllReviews } from "../../store/reviews"
 import CreateReviewForm from "../CreateReviewForm/CreateReviewForm"
@@ -22,11 +20,11 @@ const SingleRestaurant = () => {
 
     // const initial = 0
     // const reviewsAvg = (reviews.map(review => review.star_rating.reduce((acc, curr) => acc + curr, initial )))/reviews.length
+        useEffect(async () => {
+            await dispatch(getSelectedRestaurant(restaurantId))
+            await dispatch(getAllReviews(restaurantId))
+        }, [dispatch, restaurantId])
 
-    useEffect(async () => {
-        await dispatch(getSelectedRestaurant(restaurantId))
-        await dispatch(getAllReviews(restaurantId))
-    }, [dispatch])
 
     if(!reviews) return null
 
@@ -49,14 +47,6 @@ const SingleRestaurant = () => {
                         </div>
                     </div>
                 </div>
-                {/* <OpenModalButton
-                    buttonText="Update Restaurant"
-                    modalComponent={<UpdateRestaurantForm />}
-                    />
-                <OpenModalButton
-                    buttonText="Delete Restaurant"
-                    modalComponent={<DeleteRestaurant restaurant={restaurant}/>}
-                    /> */}
 
                 <div>
                     <OpenModalButton
@@ -67,10 +57,11 @@ const SingleRestaurant = () => {
                 <h3>Reviews</h3>
             {reviews.length ?
             <div>
+                <div>{reviews.length} public reviews</div>
                 {reviews.map((review) => { return(
                     <div>
                         <div>{user.username}</div>
-                        <div>{review.star_rating}</div>
+                        <div>{review.star_rating.toFixed(1)}</div>
                         <div>{review.text}</div>
                         <div>{review.created_at}</div>
                         <OpenModalButton
