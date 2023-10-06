@@ -9,7 +9,7 @@ const UpdateReviewForm = ({ review }) => {
     const reviewId = review.id
     const history = useHistory()
     const allReviews = useSelector( state => state.reviews.allReviews)
-    const updatedReview = allReviews.find(review => review.id == reviewId)
+    const updatedReview = allReviews.find(review => review.id === reviewId)
     const userId = useSelector( state => state.session.user.id)
     const restaurantId = useSelector( state => state.restaurants.singleRestaurant.id)
     const [ text, setText ] = useState(updatedReview.text)
