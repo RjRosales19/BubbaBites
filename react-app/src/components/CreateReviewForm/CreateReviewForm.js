@@ -13,6 +13,7 @@ const CreateReviewForm = () => {
     const [ starRating, setStarRating ] = useState(0)
     const { closeModal } = useModal()
     const [ clickStar, setClickStar ] = useState(starRating)
+    const [ errors, setErrors ] = useState({})
 
     const handleCreateReview = async (e) => {
         e.preventDefault()
@@ -23,10 +24,13 @@ const CreateReviewForm = () => {
             user_id: userId,
             restaurant_id:restaurantId
         }
+
         const res = await dispatch(createReview(payload, restaurantId))
         closeModal()
             if(res){
+            //     setErrors(res)
                 history.push(`/restaurants/${restaurantId}`)
+                // console.log(errors)
             }
     }
 

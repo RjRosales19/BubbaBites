@@ -7,8 +7,9 @@
 
 .restaurant-details-container{
     display: flex;
-    border: 1px dashed red;
+    border-radius: 4%;
     margin: 10% 15%;
+    background-color: rgb(24, 108, 104);
 }
 
 .single-restaurant-image-container img{
@@ -17,5 +18,8 @@
 }
 
 .single-restaurant-details-container{
-    width:20rem
+    width:20rem;
+    display: grid;
+    justify-content: center;
+    align-content: space-evenly;
 }

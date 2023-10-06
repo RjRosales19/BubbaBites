@@ -6,6 +6,7 @@
     justify-content: center;
     flex-wrap: wrap;
     width:100%;
+    /* background-color: rgb(24, 108, 104); */
 }
 
 .restaurant-tile-container{
@@ -13,11 +14,14 @@
     border: 1px dashed black;
     width: 25%;
     margin: 5px;
-    height: 15rem;
-
+    height: 24rem;
+    border-radius: 5%;
+    align-items: end;
+    background-color: rgb(24, 108, 104);
 }
 
 .restaurant-tile-container img{
     width:100%;
-    height:30%
+    height:30%;
+    border-radius: 5%;
 }

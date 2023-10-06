@@ -30,17 +30,19 @@ const ManageRestaurants = () => {
                     {ownedRestaurants.map( restaurant => (
                         <div className="restaurant-tile-container">
                             <Link to={`/restaurants/${restaurant.id}`}>
+                                <img alt={`${restaurant.name}`} src={ restaurant.image_url }/>
                                 <div>{restaurant.name}</div>
-                                <div><img alt={`${restaurant.name}`} src={ restaurant.image_url }/></div>
                             </Link>
-                            <OpenModalButton
-                                buttonText="Update Restaurant"
-                                modalComponent={<UpdateRestaurantForm restaurant={restaurant}/>}
-                            />
-                            <OpenModalButton
-                                buttonText="Delete Restaurant"
-                                modalComponent={<DeleteRestaurant restaurant={restaurant}/>}
-                            />
+                            <div>
+                                <OpenModalButton
+                                    buttonText="Update Restaurant"
+                                    modalComponent={<UpdateRestaurantForm restaurant={restaurant}/>}
+                                />
+                                <OpenModalButton
+                                    buttonText="Delete Restaurant"
+                                    modalComponent={<DeleteRestaurant restaurant={restaurant}/>}
+                                />
+                            </div>
                         </div>
                     ))}
                 </div>
