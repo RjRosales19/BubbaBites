@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useHistory } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { updateRestaurant } from "../../store/restaurants"
+import { useModal } from "../../context/Modal"
 
 
 const UpdateRestaurantForm = ({restaurant}) => {
@@ -16,6 +17,7 @@ const UpdateRestaurantForm = ({restaurant}) => {
     const [ city, setCity ] = useState(updatedRestaurant.city)
     const [ hours, setHours ] = useState(updatedRestaurant.hours)
     const [ imageUrl , setImageUrl ] = useState(updatedRestaurant.image_url)
+    const { closeModal } = useModal()
     console.log(restaurant)
     const handleUpdateRestaurant = async (e) => {
         e.preventDefault()
@@ -32,7 +34,7 @@ const UpdateRestaurantForm = ({restaurant}) => {
         console.log("PAYLOAD", payload)
         console.log("UPDATED RESTAURANT",updatedRestaurant)
         const res = await dispatch(updateRestaurant(payload, updatedRestaurant.id))
-
+        closeModal()
         if(res){
             history.push(`/restaurants/${updatedRestaurant.id}`)
         }

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { createRestaurant } from '../../store/restaurants';
-
+import { useModal } from '../../context/Modal';
 
 const CreateRestaurantForm = () => {
     const history = useHistory()
@@ -14,6 +14,7 @@ const CreateRestaurantForm = () => {
     const [ city, setCity ] = useState('')
     const [ hours, setHours ] = useState('')
     const [ imageUrl , setImageUrl ] = useState('')
+    const { closeModal } = useModal();
 
     const handleCreateRestaurant = async (e) => {
         e.preventDefault()
@@ -27,11 +28,12 @@ const CreateRestaurantForm = () => {
             hours: hours,
             image_url: imageUrl
         }
+
         const res = await dispatch(createRestaurant(payload))
-        // if(res){
-            history.push(`/restaurants/${res.id}`)
-        // }
+        closeModal()
+        history.push(`/restaurants/${res.id}`)
     }
+
     return(
         <>
         <div>

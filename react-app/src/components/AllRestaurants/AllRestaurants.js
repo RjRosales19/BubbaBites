@@ -20,9 +20,9 @@ const AllRestaurants = () => {
                 return (
                     <div className='restaurant-tile-container'>
                         <Link to={`/restaurants/${restaurant.id}`}>
-                        <img src={restaurant.image_url} alt={`${restaurant.name}`}/>
-                        <div>{restaurant.name}</div>
-                        <div>{restaurant.hours}</div>
+                            <img src={restaurant.image_url} alt={`${restaurant.name}`}/>
+                            <div>{restaurant.name}</div>
+                            <div>{restaurant.hours}</div>
                         </Link>
                     </div>
                 )

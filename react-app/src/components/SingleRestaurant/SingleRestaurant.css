@@ -1,4 +1,21 @@
 .single-restaurant-container{
-    display:flex;
-    border: 1px dashed black
+    display: grid;
+    border: 1px dashed black;
+    justify-items: center;
+    justify-content: center;
+}
+
+.restaurant-details-container{
+    display: flex;
+    border: 1px dashed red;
+    margin: 10% 15%;
+}
+
+.single-restaurant-image-container img{
+    width: 40rem;
+    height: 20rem;
+}
+
+.single-restaurant-details-container{
+    width:20rem
 }
