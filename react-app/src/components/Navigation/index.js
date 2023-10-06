@@ -15,7 +15,7 @@ function Navigation({ isLoaded }){
 				</span>
 			)}
 			<span>
-				<NavLink exact to="/restaurants"><img style={{width: "3%"}}src={"./images/BubbaBites.png"}/></NavLink>
+				<NavLink exact to="/restaurants"><img style={{width: "3%"}}src={"./images/BubbaBites.png"}alt={'BubbaBites'}/></NavLink>
 			</span>
 		</nav>
 	);
