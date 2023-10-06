@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getAllReviews, updateReview } from "../../store/reviews"
 import { useHistory } from "react-router-dom"
+import { useModal } from "../../context/Modal"
 
 const UpdateReviewForm = ({ review }) => {
     const dispatch = useDispatch()
@@ -13,6 +14,7 @@ const UpdateReviewForm = ({ review }) => {
     const restaurantId = useSelector( state => state.restaurants.singleRestaurant.id)
     const [ text, setText ] = useState(updatedReview.text)
     const [ starRating, setStarRating ] = useState(updatedReview.starRating)
+    const { closeModal } = useModal()
 
     console.log(updatedReview, review.id)
     const handleUpdateReview = async (e) => {
@@ -26,6 +28,7 @@ const UpdateReviewForm = ({ review }) => {
         }
         const res = await dispatch(updateReview(payload, updatedReview.id))
         await dispatch(getAllReviews(restaurantId))
+        closeModal()
         if(res){
 
             history.push(`/restaurants/${restaurantId}`)

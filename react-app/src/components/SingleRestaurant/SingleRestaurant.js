@@ -9,6 +9,8 @@ import { getAllReviews } from "../../store/reviews"
 import CreateReviewForm from "../CreateReviewForm/CreateReviewForm"
 import UpdateReviewForm from '../UpdateReviewForm/UpdateReviewForm'
 import DeleteReview from "../DeleteReview/DeleteReview"
+import './SingleRestaurant.css'
+
 const SingleRestaurant = () => {
     const dispatch = useDispatch()
     const { restaurantId } = useParams()
@@ -16,31 +18,45 @@ const SingleRestaurant = () => {
     const restaurant = useSelector( state => state.restaurants.singleRestaurant )
     const reviews = useSelector( state => state.reviews.allReviews)
     console.log(Object.values(reviews).reverse())
+    console.log(reviews)
+
+    // const initial = 0
+    // const reviewsAvg = (reviews.map(review => review.star_rating.reduce((acc, curr) => acc + curr, initial )))/reviews.length
 
     useEffect(async () => {
         await dispatch(getSelectedRestaurant(restaurantId))
         await dispatch(getAllReviews(restaurantId))
     }, [dispatch])
 
-    // if(!restaurant) return null
+    if(!reviews) return null
 
     return(
         <>
-            <div>
-                <h2>{ restaurant.name }</h2>
-                <div><img alt={`${restaurant.name}`} src={ restaurant.image_url }/></div>
-                <div>{ restaurant.address }</div>
-                <div>{ restaurant.city }</div>
-                <div>{ restaurant.state }</div>
-                <div>{ restaurant.hours }</div>
-                <OpenModalButton
+            <div className="single-restaurant-container">
+                <div className="restaurant-details-container">
+                    <div className="single-restaurant-image-container"><img alt={`${restaurant.name}`} src={ restaurant.image_url }/></div>
+
+                    <div className="single-restaurant-details-container">
+                        <h2>{ restaurant.name }</h2>
+                        <div>{ restaurant.address }</div>
+                        <div>{ restaurant.city }</div>
+                        <div>{ restaurant.state }</div>
+                        <div>{ restaurant.hours }</div>
+
+                        {/* <div>{ reviewsAvg.toFixed(1) }</div> */}
+                        <div>
+                            {/* (<div>{ reviews.length}</div>)+ */}
+                        </div>
+                    </div>
+                </div>
+                {/* <OpenModalButton
                     buttonText="Update Restaurant"
                     modalComponent={<UpdateRestaurantForm />}
                     />
                 <OpenModalButton
                     buttonText="Delete Restaurant"
                     modalComponent={<DeleteRestaurant restaurant={restaurant}/>}
-                    />
+                    /> */}
 
                 <div>
                     <OpenModalButton
@@ -48,6 +64,7 @@ const SingleRestaurant = () => {
                     modalComponent={<CreateReviewForm />}
                     />
                 </div>
+                <h3>Reviews</h3>
             {reviews.length ?
             <div>
                 {reviews.map((review) => { return(

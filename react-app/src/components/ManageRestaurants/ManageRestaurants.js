@@ -1,11 +1,11 @@
 import { useEffect } from "react"
+import { Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { getRestaurants } from "../../store/restaurants"
 import UpdateRestaurantForm from '../UpdateRestaurantForm/UpdateRestaurantForm'
 import DeleteRestaurant from '../DeleteRestaurant/DeleteRestaurant'
 import OpenModalButton from "../OpenModalButton"
 import CreateRestaurantForm from "../CreateRestaurantForm/CreateRestaurantForm"
-
 const ManageRestaurants = () => {
     const dispatch = useDispatch()
     const restaurants = useSelector(state => state.restaurants.allRestaurants)
@@ -26,22 +26,24 @@ const ManageRestaurants = () => {
                         buttonText="Create Restaurant"
                         modalComponent={<CreateRestaurantForm />}
                         />
-                {ownedRestaurants.map( restaurant => (
-                    <div>
-                        <div>{restaurant.name}</div>
-                        <div><img alt={`${restaurant.name}`} src={ restaurant.image_url }/></div>
-                        <OpenModalButton
-                        buttonText="Update Restaurant"
-                        modalComponent={<UpdateRestaurantForm />}
-                        />
-                        <OpenModalButton
-                        buttonText="Delete Restaurant"
-                        modalComponent={<DeleteRestaurant restaurant={restaurant}/>}
-                        />
-                    </div>
-
-
-                ))}
+                <div className="all-restaurants-container">
+                    {ownedRestaurants.map( restaurant => (
+                        <div className="restaurant-tile-container">
+                            <Link to={`/restaurants/${restaurant.id}`}>
+                                <div>{restaurant.name}</div>
+                                <div><img alt={`${restaurant.name}`} src={ restaurant.image_url }/></div>
+                            </Link>
+                            <OpenModalButton
+                                buttonText="Update Restaurant"
+                                modalComponent={<UpdateRestaurantForm restaurant={restaurant}/>}
+                            />
+                            <OpenModalButton
+                                buttonText="Delete Restaurant"
+                                modalComponent={<DeleteRestaurant restaurant={restaurant}/>}
+                            />
+                        </div>
+                    ))}
+                </div>
             </div>
         </>
     )
