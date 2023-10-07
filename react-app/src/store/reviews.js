@@ -48,12 +48,12 @@ export const createReview = (review, restaurantId) => async (dispatch) => {
         const data = await res.json()
         dispatch(getAllReviews(restaurantId))
         return data
-    // }else if(res.status < 500){
-    //     const data = await res.json()
-    //     console.log(data)
-    //     if (data.errors) {
-    //         return data.errors
-    //     }
+    }else if(res.status < 500){
+        const data = await res.json()
+        console.log(data)
+        if (data.errors) {
+            return data.errors
+        }
     }
 }
 

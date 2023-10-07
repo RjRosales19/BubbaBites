@@ -5,6 +5,16 @@ from app.forms.review_form import ReviewForm
 
 review_routes = Blueprint('reviews', __name__)
 
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{field} : {error}')
+    return errorMessages
+
 @review_routes.route('/<restaurant_id>')
 @login_required
 def get_all_reviews(restaurant_id):
@@ -31,10 +41,11 @@ def create_review(restaurant_id):
             restaurant_id = restaurant_id,
             star_rating = data['star_rating']
         )
+        print("----------------------------", new_review)
         db.session.add(new_review)
         db.session.commit()
         return new_review.to_dict()
-    return
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @review_routes.route('/<review_id>', methods=['PUT'])
 @login_required
