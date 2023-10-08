@@ -14,11 +14,15 @@
 
 .navigation-bar-container{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
 .nav-icon{
-  width: 6%;
+  width: 3rem;
   border-radius: 20%;
+}
+
+.title-logo{
+  width: 11rem;
 }

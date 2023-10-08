@@ -1,0 +1,30 @@
+.home-page-main-container{
+    display: grid;
+    justify-items: center;
+    margin: 1rem 14rem;
+}
+
+.home-first-section-container{
+    display: flex;
+    align-items: center;
+}
+
+.home-middle-section-container img{
+    height: 12rem;
+    width: 12rem;
+}
+
+.home-middle-section-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.home-third-section-container{
+    display: flex;
+    align-items: center;
+}
+
+.linked-in-logo{
+    height: 2rem;
+}
