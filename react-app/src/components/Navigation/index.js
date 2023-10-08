@@ -8,14 +8,19 @@ function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
 
 	return (
-		<nav>
-			{isLoaded && (
-				<span>
-					<ProfileButton user={sessionUser} />
-				</span>
-			)}
+		<nav className='navigation-bar-container'>
 			<span>
-				<NavLink exact to="/restaurants"><img style={{width: "3%"}}src={"./images/BubbaBites.png"}alt={'BubbaBites'}/></NavLink>
+				<NavLink exact to="/">
+					<img className="title-logo" src="../images/bubbabites_title_logo.png"/>
+				</NavLink>
+			</span>
+			<span>
+				<NavLink exact to="/restaurants"><img className="nav-icon" src="./images/BubbaBites.png" alt={'BubbaBites'}/></NavLink>
+			</span>
+			<span>
+			{isLoaded && (
+					<ProfileButton user={sessionUser} />
+					)}
 			</span>
 		</nav>
 	);

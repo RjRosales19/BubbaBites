@@ -5,3 +5,24 @@
 .hidden {
   display: none;
 }
+
+.nav-button{
+  width: 3rem;
+  height: 3rem;
+  border: none;
+}
+
+.navigation-bar-container{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.nav-icon{
+  width: 3rem;
+  border-radius: 20%;
+}
+
+.title-logo{
+  width: 11rem;
+}

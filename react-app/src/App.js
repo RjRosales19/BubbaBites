@@ -9,6 +9,7 @@ import CreateRestaurantForm from "./components/CreateRestaurantForm/CreateRestau
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import ManageRestaurants from "./components/ManageRestaurants/ManageRestaurants";
+import HomePage from "./components/HomePage/HomePage";
 
 function App() {
   const dispatch = useDispatch();
@@ -34,13 +35,14 @@ function App() {
           <Route exact path="/restaurants">
             <AllRestaurants />
           </Route>
-          <Route>
-          </Route>
           <Route path="/login" >
             <LoginFormPage />
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route exact path="/" >
+            <HomePage />
           </Route>
         </Switch>
       )}
