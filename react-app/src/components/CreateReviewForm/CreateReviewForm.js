@@ -4,6 +4,7 @@ import { createReview } from '../../store/reviews';
 import { useHistory } from 'react-router-dom';
 import { useModal } from '../../context/Modal';
 import './CreateReviewForm.css'
+
 const CreateReviewForm = () => {
     const dispatch = useDispatch()
     const history = useHistory()
@@ -13,7 +14,7 @@ const CreateReviewForm = () => {
     const [ starRating, setStarRating ] = useState(0)
     const { closeModal } = useModal()
     const [ clickStar, setClickStar ] = useState(starRating)
-    const [ errors, setErrors ] = useState({})
+    const [ errors, setErrors ] = useState([])
 
     const handleCreateReview = async (e) => {
         e.preventDefault()
@@ -24,14 +25,22 @@ const CreateReviewForm = () => {
             user_id: userId,
             restaurant_id:restaurantId
         }
-
-        const res = await dispatch(createReview(payload, restaurantId))
-        closeModal()
+        try{
+            const res = await dispatch(createReview(payload, restaurantId))
             if(res){
-            //     setErrors(res)
-                history.push(`/restaurants/${restaurantId}`)
-                // console.log(errors)
+                closeModal()
+                setErrors(res.errors)
+                console.log(res)
             }
+        }catch{
+            history.push(`/restaurants/${restaurantId}`)
+
+        }
+        console.log(errors)
+        // if(res){
+        //     }else{
+        //         setErrors(['Field is required'])
+        //     }
     }
 
 
@@ -39,6 +48,7 @@ const CreateReviewForm = () => {
         <>
             <div> Post a review </div>
             <form onSubmit={handleCreateReview}>
+                <ul>{errors.map(error => (<div>{error}</div>))}</ul>
                 <label>Text</label>
                 <input
                 type="text"
