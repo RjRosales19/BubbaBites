@@ -23,7 +23,7 @@ const ManageRestaurants = () => {
             <h1> Manage your Restaurants</h1>
             <div>
                         <OpenModalButton
-                        buttonText="Create Restaurant"
+                        buttonText="Create a Restaurant"
                         modalComponent={<CreateRestaurantForm />}
                         />
                 <div className="all-restaurants-container">

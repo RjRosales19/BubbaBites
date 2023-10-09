@@ -33,7 +33,6 @@ function LoginFormModal() {
     <>
     <div className="main-sign-in-container">
       <h1>Sign In</h1>
-
       <div className="sign-in-form-container">
         <div>
           <form onSubmit={handleSubmit}>
@@ -52,6 +51,7 @@ function LoginFormModal() {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   placeholder="Email"
+                  maxLength="50"
                 />
               </label>
             </div>
@@ -65,6 +65,8 @@ function LoginFormModal() {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                   placeholder="Password"
+                  minLength="8"
+                  maxLength="50"
                 />
               </label>
             </div>

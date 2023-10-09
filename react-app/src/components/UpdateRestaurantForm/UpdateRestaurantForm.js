@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { updateRestaurant } from "../../store/restaurants"
 import { useModal } from "../../context/Modal"
-
+import './UpdateRestaurantForm.css'
 
 const UpdateRestaurantForm = ({restaurant}) => {
     const history = useHistory()
@@ -42,61 +42,96 @@ const UpdateRestaurantForm = ({restaurant}) => {
 
     return(
         <>
-        <div>
-            Update a Restaurant
+        <div className="main-create-restaurant-container">
+
+            <h1>Update a Restaurant</h1>
+
+            <div className="create-restaurant-form-container">
+                <form onSubmit={handleUpdateRestaurant}>
+
+                Name
+                        <div>
+                            <label>
+                                <input
+                                type="text"
+                                value={name}
+                                required
+                                onChange={ (e) => setName(e.target.value)}
+                                placeholder='Name'
+                                />
+                            </label>
+                        </div>
+
+                        Address
+                        <div>
+                            <label>
+                                <input
+                                type="text"
+                                value={address}
+                                required
+                                onChange={ (e) => setAddress(e.target.value)}
+                                placeholder='Address'
+                                />
+                            </label>
+                        </div>
+
+                        State
+                        <div>
+                            <label>
+                                <input
+                                type="text"
+                                value={state}
+                                required
+                                onChange={ (e) => setState(e.target.value)}
+                                placeholder='State'
+                                />
+                            </label>
+                        </div>
+
+                        City
+                        <div>
+                            <label>
+                                <input
+                                type="text"
+                                value={city}
+                                required
+                                onChange={ (e) => setCity(e.target.value)}
+                                placeholder='City'
+                                />
+                            </label>
+                        </div>
+
+                        Hours
+                        <div>
+                            <label>
+                                <input
+                                type="text"
+                                value={hours}
+                                required
+                                onChange={ (e) => setHours(e.target.value)}
+                                placeholder='Hours'
+                                />
+                            </label>
+                        </div>
+
+                        Image Url
+                        <div>
+                            <label>
+                                <input
+                                type="url"
+                                value={imageUrl}
+                                required
+                                onChange={ (e) => setImageUrl(e.target.value)}
+                                placeholder='Image Url'
+                                />
+                            </label>
+                        </div>
+
+                    <button className="create-new-restaurant-button" type="submit">Update Restaurant</button>
+                </form>
+            </div>
         </div>
 
-        <form onSubmit={handleUpdateRestaurant}>
-            <label>Name
-                <input
-                type="text"
-                value={name}
-                required
-                onChange={ (e) => setName(e.target.value)}
-                />
-            </label>
-            <label>Address
-                <input
-                type="text"
-                value={address}
-                required
-                onChange={ (e) => setAddress(e.target.value)}
-                />
-            </label>
-            <label>State
-                <input
-                type="text"
-                value={state}
-                required
-                onChange={ (e) => setState(e.target.value)}
-                />
-            </label>
-            <label>City
-                <input
-                type="text"
-                value={city}
-                required
-                onChange={ (e) => setCity(e.target.value)}
-                />
-            </label>
-            <label>Hours
-                <input
-                type="text"
-                value={hours}
-                required
-                onChange={ (e) => setHours(e.target.value)}
-                />
-            </label>
-            <label>Image Url
-                <input
-                type="url"
-                value={imageUrl}
-                required
-                onChange={ (e) => setImageUrl(e.target.value)}
-                />
-            </label>
-            <button type="submit">Update Restaurant</button>
-        </form>
         </>
     )
 }

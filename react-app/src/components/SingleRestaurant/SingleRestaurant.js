@@ -47,13 +47,14 @@ const SingleRestaurant = () => {
                         </div>
                     </div>
                 </div>
-
-                <div>
-                    <OpenModalButton
-                    buttonText="Create a Review"
-                    modalComponent={<CreateReviewForm />}
-                    />
-                </div>
+                {user &&
+                    <div>
+                        <OpenModalButton
+                        buttonText="Create a Review"
+                        modalComponent={<CreateReviewForm />}
+                        />
+                    </div>
+                }
                 <h3>Reviews</h3>
             {reviews.length ?
             <div>
