@@ -16,7 +16,6 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 @review_routes.route('/<restaurant_id>')
-@login_required
 def get_all_reviews(restaurant_id):
     """
     Get all reviews for a restaurant
