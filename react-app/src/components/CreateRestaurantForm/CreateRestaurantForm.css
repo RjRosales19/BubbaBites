@@ -1,22 +1,22 @@
-.main-sign-up-container{
+.main-create-restaurant-container{
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 4% 4rem;
 }
 
-.sign-up-form-container input{
+.create-restaurant-form-container input{
     width: 21rem;
     height: 18px;
     margin: 3% 0%;
 }
 
-.sign-up-form-container{
+.create-restaurant-form-container{
     font-weight: bold;
     font-size: 1rem;
 }
 
-.sign-up-form-button{
+.create-new-restaurant-button{
     width: 100%;
     height: 25px;
     background-color: rgb(24, 108, 104);

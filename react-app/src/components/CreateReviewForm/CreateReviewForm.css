@@ -5,3 +5,13 @@
 .blank{
     color: lightgray;
 }
+
+.create-stars-input{
+    font-size: 3rem;
+}
+
+.main-create-review-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

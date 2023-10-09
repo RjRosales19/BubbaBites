@@ -25,7 +25,7 @@ const HomePage = () => {
                             </div>
                             <div>
                                 <OpenModalButton
-                                    buttonText="Log In"
+                                    buttonText="Sign In"
                                     modalComponent={<LoginFormModal />}
                                 />
                                 <OpenModalButton

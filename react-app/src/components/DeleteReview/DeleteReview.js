@@ -19,10 +19,17 @@ const DeleteReview = ({ review }) => {
     }
     return(
         <>
-            <h2>Delete Review</h2>
-            <h4>Are you sure you want to delete this Review?</h4>
-            <button onClick={handleDeleteReview}>Delete Review</button>
-            <button onClick={handleCancelClick}>Cancel</button>
+            <div className="delete-restaurant-container">
+                <div>
+                    <h2>Delete Review</h2>
+                    <h4>Are you sure you want to delete this Review?</h4>
+                </div>
+
+                <div>
+                    <button className='cancel-delete-button' onClick={handleCancelClick}>Cancel</button>
+                    <button className='delete-button' onClick={handleDeleteReview}>Delete Review</button>
+                </div>
+            </div>
         </>
     )
 }
