@@ -69,7 +69,9 @@ const HomePage = () => {
                         <h2>Everything you crave</h2>
                         <h4>Your favorite local restaurants</h4>
                         <div>Get a slice of pizza or a whole meal, all in one touch of a button</div>
-                        <button className="get-bubba-button" href="https://github.com/RjRosales19/BubbaBites">Get BubbaBites</button>
+                        <div>
+                        <a className="get-bubba-button" href="https://github.com/RjRosales19/BubbaBites">Get BubbaBites</a>
+                        </div>
                     </div>
             </div>
             <div>

@@ -28,3 +28,12 @@
 .linked-in-logo{
     height: 2rem;
 }
+
+.get-bubba-button{
+    border: solid 1px black;
+    border-radius: 7%;
+    text-decoration: none;
+    color: white;
+    background-color: rgb(24, 108, 104);
+    padding: 1% 2%;
+}
