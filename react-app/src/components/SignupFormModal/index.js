@@ -31,51 +31,82 @@ function SignupFormModal() {
 
 	return (
 		<>
+		<div className="main-sign-up-container">
+
 			<h1>Sign Up</h1>
-			<form onSubmit={handleSubmit}>
-				<ul>
-					{errors.map((error, idx) => (
-						<li key={idx}>{error}</li>
-					))}
-				</ul>
-				<label>
-					Email
-					<input
-						type="text"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-						required
-					/>
-				</label>
-				<label>
-					Username
-					<input
-						type="text"
-						value={username}
-						onChange={(e) => setUsername(e.target.value)}
-						required
-					/>
-				</label>
-				<label>
-					Password
-					<input
-						type="password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-						required
-					/>
-				</label>
-				<label>
-					Confirm Password
-					<input
-						type="password"
-						value={confirmPassword}
-						onChange={(e) => setConfirmPassword(e.target.value)}
-						required
-					/>
-				</label>
-				<button type="submit">Sign Up</button>
-			</form>
+
+			<div className="sign-up-form-container">
+				<div>
+					<form onSubmit={handleSubmit}>
+						<ul>
+							{errors.map((error, idx) => <li key={idx}>{error}</li>)}
+						</ul>
+
+						Email
+						<div>
+							<label>
+								<input
+								type="text"
+								value={email}
+								onChange={(e) => setEmail(e.target.value)}
+								required
+								placeholder="Email"
+								maxLength="50"
+								/>
+							</label>
+						</div>
+
+						Username
+						<div>
+							<label>
+								<input
+								type="text"
+								value={username}
+								onChange={(e) => setUsername(e.target.value)}
+								required
+								placeholder="Username"
+								minLength='2'
+								maxLength='30'
+								/>
+							</label>
+						</div>
+
+						Password
+						<div>
+							<label>
+								<input
+								type="password"
+								value={password}
+								onChange={(e) => setPassword(e.target.value)}
+								required
+								placeholder="Password"
+								minLength="8"
+								maxLength="50"
+								/>
+							</label>
+						</div>
+
+						Confirm Password
+						<div>
+							<label>
+								<input
+								type="password"
+								value={confirmPassword}
+								onChange={(e) => setConfirmPassword(e.target.value)}
+								required
+								placeholder="Confirm Password"
+								minLength="8"
+								maxLength="50"
+								/>
+							</label>
+						</div>
+
+						<button className='sign-up-form-button' type="submit">Sign Up</button>
+
+					</form>
+				</div>
+			</div>
+    	</div>
 		</>
 	);
 }

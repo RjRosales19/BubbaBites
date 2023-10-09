@@ -1,0 +1,19 @@
+.delete-restaurant-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 4rem 4rem;
+}
+
+.cancel-delete-button{
+    font-weight: bold;
+    border: none;
+    text-decoration: underline;
+}
+
+.delete-button{
+    font-weight: bold;
+    color: red;
+    border: none;
+    text-decoration: underline;
+}
