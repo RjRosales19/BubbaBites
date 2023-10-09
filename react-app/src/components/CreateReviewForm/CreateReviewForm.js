@@ -51,8 +51,6 @@ const CreateReviewForm = () => {
                 <div className='create-review-form-container'>
                     <form onSubmit={handleCreateReview}>
                         <ul>{errors.map(error => (<div>{error}</div>))}</ul>
-
-                        <label>Rating:</label>
                         <div className='create-stars-input'>
                             <span
                                 className={clickStar >= 1 ? 'full' : 'blank'}
@@ -97,12 +95,13 @@ const CreateReviewForm = () => {
                         </div>
 
                         <div>
-                            Text
                             <textarea
+                            className='text-area-input'
                             type="text"
                             value={text}
                             required
                             onChange={(e) => setText(e.target.value)}
+                            placeholder="Helpful reviews mention specific items and describe their quality and taste"
                             >
                             </textarea>
                             {/* <input
@@ -113,7 +112,7 @@ const CreateReviewForm = () => {
                             /> */}
                         </div>
 
-                        <button type="submit">Create Review</button>
+                        <button className='create-review-button' type="submit">Create Review</button>
 
                     </form>
                 </div>
