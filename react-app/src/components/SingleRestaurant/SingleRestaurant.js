@@ -18,6 +18,7 @@ const SingleRestaurant = () => {
     console.log(Object.values(reviews).reverse())
     console.log(reviews)
 
+    const reviewOwner = user && reviews.find((review) => review.user_id === user.id)
     // const initial = 0
     // const reviewsAvg = (reviews.map(review => review.star_rating.reduce((acc, curr) => acc + curr, initial )))/reviews.length
         useEffect(async () => {
@@ -47,7 +48,7 @@ const SingleRestaurant = () => {
                         </div>
                     </div>
                 </div>
-                {user &&
+                {user && !reviewOwner &&
                     <div>
                         <OpenModalButton
                         buttonText="Add Review"
@@ -61,18 +62,22 @@ const SingleRestaurant = () => {
                 <div>{reviews.length} public reviews</div>
                 {reviews.map((review) => { return(
                     <div>
-                        <div>{user.username}</div>
+                        <div>{review.user_id}</div>
                         <div>{review.star_rating.toFixed(1)}</div>
                         <div>{review.text}</div>
                         <div>{review.created_at}</div>
-                        <OpenModalButton
-                            buttonText='Edit Review'
-                            modalComponent={<UpdateReviewForm review={review}/>}
-                        />
-                        <OpenModalButton
-                            buttonText='Delete Review'
-                            modalComponent={<DeleteReview review={review}/>}
-                        />
+                        {user && (user.id === review.user_id) &&
+                        (<>
+                            <OpenModalButton
+                                buttonText='Edit Review'
+                                modalComponent={<UpdateReviewForm review={review}/>}
+                            />
+                            <OpenModalButton
+                                buttonText='Delete Review'
+                                modalComponent={<DeleteReview review={review}/>}
+                            />
+                        </>)
+                        }
                     </div>
                     )
                 }
