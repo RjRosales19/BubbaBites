@@ -1,3 +1,4 @@
+import { getAllReviews } from "./reviews";
 
 // ACTION TYPE
 const GET_ALL_RESTAURANTS = 'restaurants/GET_ALL_RESTAURANTS';
@@ -41,6 +42,7 @@ export const getSelectedRestaurant = (restaurantId) => async (dispatch) => {
     if(res.ok){
         const data = await res.json()
         dispatch(getSingleRestaurant(data))
+        // dispatch(getAllReviews(restaurantId))
     } else {
         console.log('No restaurant found')
     }

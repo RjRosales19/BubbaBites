@@ -15,8 +15,9 @@ const SingleRestaurant = () => {
     const user = useSelector( state=> state.session.user)
     const restaurant = useSelector( state => state.restaurants.singleRestaurant )
     const reviews = useSelector( state => state.reviews.allReviews)
-    console.log(Object.values(reviews).reverse())
+    console.log(Object.values(reviews))
     console.log(reviews)
+
 
     // const reviewOwner = user && Object.values(reviews.find((review) => review.user_id === user.id))
     // const initial = 0
