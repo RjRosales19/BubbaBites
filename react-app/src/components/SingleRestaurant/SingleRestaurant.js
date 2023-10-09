@@ -18,7 +18,7 @@ const SingleRestaurant = () => {
     console.log(Object.values(reviews).reverse())
     console.log(reviews)
 
-    const reviewOwner = user && reviews.find((review) => review.user_id === user.id)
+    // const reviewOwner = user && Object.values(reviews.find((review) => review.user_id === user.id))
     // const initial = 0
     // const reviewsAvg = (reviews.map(review => review.star_rating.reduce((acc, curr) => acc + curr, initial )))/reviews.length
         useEffect(async () => {
@@ -48,7 +48,8 @@ const SingleRestaurant = () => {
                         </div>
                     </div>
                 </div>
-                {user && !reviewOwner &&
+                {user &&
+                //  !reviewOwner &&
                     <div>
                         <OpenModalButton
                         buttonText="Add Review"
