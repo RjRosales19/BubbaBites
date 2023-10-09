@@ -50,7 +50,7 @@ const SingleRestaurant = () => {
                 {user &&
                     <div>
                         <OpenModalButton
-                        buttonText="Create a Review"
+                        buttonText="Add Review"
                         modalComponent={<CreateReviewForm />}
                         />
                     </div>

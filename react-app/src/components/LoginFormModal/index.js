@@ -32,7 +32,9 @@ function LoginFormModal() {
   return (
     <>
     <div className="main-sign-in-container">
+
       <h1>Sign In</h1>
+
       <div className="sign-in-form-container">
         <div>
           <form onSubmit={handleSubmit}>
@@ -41,6 +43,7 @@ function LoginFormModal() {
                 <li key={idx}>{error}</li>
               ))}
             </ul>
+
             Email
             <div>
               <label>
@@ -55,6 +58,7 @@ function LoginFormModal() {
                 />
               </label>
             </div>
+
             Password
             <div>
               <label>
@@ -70,7 +74,9 @@ function LoginFormModal() {
                 />
               </label>
             </div>
+
             <button className='sign-in-form-modal-button'type="submit">Sign In</button>
+
           </form>
         </div>
         <button className="sign-in-demo-user" onClick={handleSignDemo}>Sign in as Demo User</button>
