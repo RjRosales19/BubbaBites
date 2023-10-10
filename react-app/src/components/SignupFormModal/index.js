@@ -12,10 +12,13 @@ function SignupFormModal() {
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [errors, setErrors] = useState([]);
 	const { closeModal } = useModal();
+	const isValidEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)
 
+	console.log(isValidEmail)
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		if (password === confirmPassword) {
+
+		if (password === confirmPassword && isValidEmail) {
 			const data = await dispatch(signUp(username, email, password));
 			if (data) {
 				setErrors(data);
@@ -24,8 +27,9 @@ function SignupFormModal() {
 			}
 		} else {
 			setErrors([
-				"Confirm Password field must be the same as the Password field",
+				"Confirm Password field must be the same as the Password field", "Must be a valid email"
 			]);
+			console.log(errors)
 		}
 	};
 
@@ -51,6 +55,7 @@ function SignupFormModal() {
 								onChange={(e) => setEmail(e.target.value)}
 								required
 								placeholder="Email"
+								minLength='6'
 								maxLength="50"
 								/>
 							</label>

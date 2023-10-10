@@ -16,6 +16,8 @@ const CreateReviewForm = () => {
     const [ clickStar, setClickStar ] = useState(starRating)
     const [ errors, setErrors ] = useState([])
 
+    const disabledCreate = starRating < 1 || text.length < 10
+
     const handleCreateReview = async (e) => {
         e.preventDefault()
 
@@ -26,17 +28,24 @@ const CreateReviewForm = () => {
             restaurant_id:restaurantId
         }
         try{
-            const res = await dispatch(createReview(payload, restaurantId))
-            if(res){
-                closeModal()
-                setErrors(res.errors)
-                console.log(res)
+            if(starRating){
+                const res = await dispatch(createReview(payload, restaurantId))
+                if(res){
+                    closeModal()
+                    setErrors(res)
+                    console.log(res)
+                }
+            }else if(text.length > 10){
+                setErrors(["Minimum of 10 characters is required"])
+            }
+            else{
+
+                setErrors(["Star Rating is required"])
             }
         }catch{
             history.push(`/restaurants/${restaurantId}`)
 
         }
-        console.log(errors)
         // if(res){
         //     }else{
         //         setErrors(['Field is required'])
@@ -102,6 +111,8 @@ const CreateReviewForm = () => {
                             required
                             onChange={(e) => setText(e.target.value)}
                             placeholder="Helpful reviews mention specific items and describe their quality and taste"
+                            minLength='10'
+                            maxLength='200'
                             >
                             </textarea>
                             {/* <input
@@ -112,7 +123,7 @@ const CreateReviewForm = () => {
                             /> */}
                         </div>
 
-                        <button className='create-review-button' type="submit">Create Review</button>
+                        <button disabled={disabledCreate} className='create-review-button' type="submit">Create Review</button>
 
                     </form>
                 </div>

@@ -1,17 +1,16 @@
 .all-restaurants-container{
     display: flex;
-    border: 1px dashed black;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     width:100%;
     /* background-color: rgb(24, 108, 104); */
+    gap: 1rem;
 }
 
 .restaurant-tile-container{
     display:grid;
-    border: 1px dashed black;
     width: 25%;
     margin: 5px;
     height: 25rem;

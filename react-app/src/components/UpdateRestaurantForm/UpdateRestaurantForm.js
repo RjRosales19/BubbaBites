@@ -18,6 +18,7 @@ const UpdateRestaurantForm = ({restaurant}) => {
     const [ hours, setHours ] = useState(updatedRestaurant.hours)
     const [ imageUrl , setImageUrl ] = useState(updatedRestaurant.image_url)
     const { closeModal } = useModal()
+    const [ errors, setErrors ] = ([])
     console.log(restaurant)
     const handleUpdateRestaurant = async (e) => {
         e.preventDefault()
@@ -33,10 +34,17 @@ const UpdateRestaurantForm = ({restaurant}) => {
         }
         console.log("PAYLOAD", payload)
         console.log("UPDATED RESTAURANT",updatedRestaurant)
-        const res = await dispatch(updateRestaurant(payload, updatedRestaurant.id))
-        closeModal()
-        if(res){
-            history.push(`/restaurants/${updatedRestaurant.id}`)
+        try{
+
+            const res = await dispatch(updateRestaurant(payload, updatedRestaurant.id))
+            closeModal()
+            if(res){
+                history.push(`/restaurants/${updatedRestaurant.id}`)
+            }
+        }catch{
+
+            // setErrors()
+            // console.log(errors)
         }
     }
 

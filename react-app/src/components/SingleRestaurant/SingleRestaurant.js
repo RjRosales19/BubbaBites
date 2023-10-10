@@ -20,16 +20,17 @@ const SingleRestaurant = () => {
 
     const restaurantOwner = user && restaurant.user_id === user.id
     const reviewOwner = user && reviews.find((review) => review.user_id === user.id)
-    // const initial = 0
-    // const reviewsAvg = (reviews.map(review => review.star_rating.reduce((acc, curr) => acc + curr, initial )))/reviews.length
-
+    const initial = 0
+    // const reviewsAvg = reviews.map(review => review.star_rating.reduce((acc, curr) => acc + curr, initial )))/reviews.length
+    const reviewsAvg = (reviews.map(review => review.star_rating).reduce((acc,curr) => acc+curr, initial))/reviews.length
+    console.log(reviewsAvg)
     useEffect(() => {
         dispatch(getSelectedRestaurant(restaurantId))
         dispatch(getAllReviews(restaurantId))
     }, [dispatch, restaurantId])
 
 
-    if(!reviews) return null
+    if(reviews.length < 0) return null
     if(!user) return null
 
     return(
@@ -45,9 +46,9 @@ const SingleRestaurant = () => {
                         <div>{ restaurant.state }</div>
                         <div>{ restaurant.hours }</div>
 
-                        {/* <div>{ reviewsAvg.toFixed(1) }</div> */}
+                        {/* <div>Reviews Average{ reviewsAvg.toFixed(1) }</div> */}
                         <div>
-                            {/* (<div>{ reviews.length}</div>)+ */}
+                            {/* <div>Total Reviews{ reviews.length}</div> */}
                         </div>
                     </div>
                 </div>

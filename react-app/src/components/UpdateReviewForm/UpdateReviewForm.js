@@ -16,7 +16,7 @@ const UpdateReviewForm = ({ review }) => {
     const [ starRating, setStarRating ] = useState(updatedReview.star_rating)
     const { closeModal } = useModal()
     const [ clickStar, setClickStar ] = useState(starRating)
-
+    const disabledUpdate = starRating < 1 || text.length < 10
     console.log(updatedReview, review.id)
     console.log(updatedReview.star_rating)
     const handleUpdateReview = async (e) => {
@@ -93,11 +93,13 @@ const UpdateReviewForm = ({ review }) => {
                             required
                             onChange={(e) => setText(e.target.value)}
                             placeholder="Helpful reviews mention specific items and describe their quality and taste"
+                            minLength='10'
+                            maxLength='200'
                             >
                             </textarea>
                         </div>
 
-                <button className='create-review-button'type="submit">Update Review</button>
+                <button disabled={disabledUpdate} className='create-review-button'type="submit">Update Review</button>
             </form>
                 </div>
             </div>
