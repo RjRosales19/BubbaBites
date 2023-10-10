@@ -10,11 +10,13 @@
     border-radius: 4%;
     margin: 10% 15%;
     background-color: rgb(24, 108, 104);
+    height: 20rem;
 }
 
 .single-restaurant-image-container img{
     width: 40rem;
     height: 20rem;
+    border-radius: 4%;
 }
 
 .single-restaurant-details-container{
@@ -22,4 +24,5 @@
     display: grid;
     justify-content: center;
     align-content: space-evenly;
+    border-radius: 5%;
 }

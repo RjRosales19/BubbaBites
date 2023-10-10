@@ -14,21 +14,23 @@ const SingleRestaurant = () => {
     const { restaurantId } = useParams()
     const user = useSelector( state=> state.session.user)
     const restaurant = useSelector( state => state.restaurants.singleRestaurant )
-    const reviews = useSelector( state => state.reviews.allReviews)
-    console.log(Object.values(reviews))
-    console.log(reviews)
+    const reviews = Object.values(useSelector(state => state.reviews.allReviews))
+    console.log((reviews).find(review => review.user_id === user.id))
+    console.log(user)
 
-
-    // const reviewOwner = user && Object.values(reviews.find((review) => review.user_id === user.id))
+    const restaurantOwner = user && restaurant.user_id === user.id
+    const reviewOwner = user && reviews.find((review) => review.user_id === user.id)
     // const initial = 0
     // const reviewsAvg = (reviews.map(review => review.star_rating.reduce((acc, curr) => acc + curr, initial )))/reviews.length
-        useEffect(async () => {
-            await dispatch(getSelectedRestaurant(restaurantId))
-            await dispatch(getAllReviews(restaurantId))
-        }, [dispatch, restaurantId])
+
+    useEffect(() => {
+        dispatch(getSelectedRestaurant(restaurantId))
+        dispatch(getAllReviews(restaurantId))
+    }, [dispatch, restaurantId])
 
 
     if(!reviews) return null
+    if(!user) return null
 
     return(
         <>
@@ -49,8 +51,8 @@ const SingleRestaurant = () => {
                         </div>
                     </div>
                 </div>
-                {user &&
-                //  !reviewOwner &&
+                {user && !(restaurantOwner ||
+                reviewOwner) &&
                     <div>
                         <OpenModalButton
                         buttonText="Add Review"

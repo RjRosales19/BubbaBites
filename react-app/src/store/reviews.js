@@ -28,7 +28,6 @@ export const removeReview = (reviewId) => ({
 //THUNKS
 export const getAllReviews = (restaurantId) => async (dispatch) => {
     const res = await fetch(`/api/reviews/${restaurantId}`)
-    console.log(res)
 
     if(res.ok){
         const data = await res.json()
