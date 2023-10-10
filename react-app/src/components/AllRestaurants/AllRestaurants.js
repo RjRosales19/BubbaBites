@@ -21,8 +21,10 @@ const AllRestaurants = () => {
                     <div className='restaurant-tile-container'>
                         <Link to={`/restaurants/${restaurant.id}`}>
                             <img src={restaurant.image_url} alt={`${restaurant.name}`}/>
-                            <div>{restaurant.name}</div>
-                            <div>{restaurant.hours}</div>
+                            <div className='restaurant-tile-info-container'>
+                                <div>{restaurant.name}</div>
+                                <div>{restaurant.hours}</div>
+                            </div>
                         </Link>
                     </div>
                 )

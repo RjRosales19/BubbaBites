@@ -49,7 +49,7 @@ function LoginFormModal() {
               <label>
                 <input
                   className="sign-in-email-input"
-                  type="text"
+                  type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
