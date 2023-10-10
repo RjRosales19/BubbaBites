@@ -1,0 +1,15 @@
+.manage-restaurant-buttons{
+    display:flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+
+.manage-restaurant-buttons button {
+    border: none;
+    background: none;
+    color: red;
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: medium;
+}

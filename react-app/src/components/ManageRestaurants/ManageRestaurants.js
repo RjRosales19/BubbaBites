@@ -6,6 +6,7 @@ import UpdateRestaurantForm from '../UpdateRestaurantForm/UpdateRestaurantForm'
 import DeleteRestaurant from '../DeleteRestaurant/DeleteRestaurant'
 import OpenModalButton from "../OpenModalButton"
 import CreateRestaurantForm from "../CreateRestaurantForm/CreateRestaurantForm"
+import './ManageRestaurants.css'
 const ManageRestaurants = () => {
     const dispatch = useDispatch()
     const restaurants = useSelector(state => state.restaurants.allRestaurants)
@@ -33,13 +34,13 @@ const ManageRestaurants = () => {
                                 <img alt={`${restaurant.name}`} src={ restaurant.image_url }/>
                                 <div>{restaurant.name}</div>
                             </Link>
-                            <div>
+                            <div className="manage-restaurant-buttons">
                                 <OpenModalButton
-                                    buttonText="Update Restaurant"
+                                    buttonText="Update"
                                     modalComponent={<UpdateRestaurantForm restaurant={restaurant}/>}
                                 />
                                 <OpenModalButton
-                                    buttonText="Delete Restaurant"
+                                    buttonText="Delete"
                                     modalComponent={<DeleteRestaurant restaurant={restaurant}/>}
                                 />
                             </div>
