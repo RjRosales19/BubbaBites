@@ -23,6 +23,10 @@ const SingleRestaurant = () => {
     const initial = 0
     // const reviewsAvg = reviews.map(review => review.star_rating.reduce((acc, curr) => acc + curr, initial )))/reviews.length
     const reviewsAvg = (reviews.map(review => review.star_rating).reduce((acc,curr) => acc+curr, initial))/reviews.length
+    const defaultImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/310px-Placeholder_view_vector.svg.png"
+    const imageError = (e) => {
+        e.target.src = defaultImage
+    }
     console.log(reviewsAvg)
     useEffect(() => {
         dispatch(getSelectedRestaurant(restaurantId))
@@ -49,7 +53,9 @@ const SingleRestaurant = () => {
         <>
             <div className="single-restaurant-container">
                 <div className="restaurant-details-container">
-                    <div className="single-restaurant-image-container"><img alt={`${restaurant.name}`} src={ restaurant.image_url }/></div>
+                    <div className="single-restaurant-image-container">
+                    <img onError={imageError} src={restaurant.image_url ? restaurant.image_url : defaultImage } alt={`${restaurant.name}`}/>
+                    </div>
 
                     <div className="single-restaurant-details-container">
                         <h2>{ restaurant.name }</h2>
