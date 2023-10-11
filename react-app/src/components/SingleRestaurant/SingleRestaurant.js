@@ -15,7 +15,7 @@ const SingleRestaurant = () => {
     const user = useSelector( state=> state.session.user)
     const restaurant = useSelector( state => state.restaurants.singleRestaurant )
     const reviews = Object.values(useSelector(state => state.reviews.allReviews))
-    console.log((reviews).find(review => review.user_id === user.id))
+    // console.log((reviews).find(review => review.user_id === user.id))
     console.log(user)
 
     const restaurantOwner = user && restaurant.user_id === user.id
@@ -29,9 +29,11 @@ const SingleRestaurant = () => {
         dispatch(getAllReviews(restaurantId))
     }, [dispatch, restaurantId])
 
-
+    if(!user) {
+        const user = 0
+    }
     if(reviews.length < 0) return null
-    if(!user) return null
+
 
     return(
         <>
@@ -67,6 +69,7 @@ const SingleRestaurant = () => {
                 <div>{reviews.length} public reviews</div>
                 {reviews.map((review) => { return(
                     <div>
+
                         <div>{review.user_id}</div>
                         <div>{review.star_rating.toFixed(1)}</div>
                         <div>{review.text}</div>
