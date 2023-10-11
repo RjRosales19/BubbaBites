@@ -24,3 +24,8 @@
     color: white;
     margin: 4% 0%;
 }
+
+.errors{
+    color: red;
+    font-size: 14px;
+}

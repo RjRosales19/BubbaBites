@@ -62,7 +62,7 @@ const UpdateRestaurantForm = ({restaurant}) => {
                 <form onSubmit={handleUpdateRestaurant}>
 
                         <ul>
-							{Object.values(errors).map(error => <li>{error}</li>)}
+							{Object.values(errors).map(error => <li className='errors'>{error}</li>)}
 						</ul>
 
                 Name

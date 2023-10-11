@@ -69,7 +69,7 @@ const CreateReviewForm = () => {
                 <h1> Add a Review </h1>
                 <div className='create-review-form-container'>
                     <form onSubmit={handleCreateReview}>
-                        <ul>{Object.values(errors).map(error => (<li>{error}</li>))}</ul>
+                        <ul>{Object.values(errors).map(error => (<li className='errors'>{error}</li>))}</ul>
                         <div className='create-stars-input'>
                             <span
                                 className={clickStar >= 1 ? 'full' : 'blank'}

@@ -7,7 +7,7 @@ import './CreateRestaurantForm.css'
 const CreateRestaurantForm = () => {
     const history = useHistory()
     const dispatch = useDispatch()
-    const userId = useSelector( state => state.session.user.id)
+    const userId = useSelector( state => state.session.user?.id)
     const [ name, setName ] = useState('')
     const [ address, setAddress ] = useState('')
     const [ state, setState ] = useState('')
@@ -17,12 +17,14 @@ const CreateRestaurantForm = () => {
     const [ errors, setErrors ] = useState({})
     const { closeModal } = useModal();
 
+    if(!userId) history.push('/restaurants')
+
     const handleCreateRestaurant = async (e) => {
         e.preventDefault()
 
         const errorsObj = {}
 
-        if(name.length < 4) errorsObj.name = "Name must be atleast 4 chacters"
+        if(name.length < 4) errorsObj.name = "Name must be atleast 4 characters"
         if(address.length < 5) errorsObj.address = "Address must be atleast 5 characters"
         if(state.length < 2) errorsObj.state = "State must be atleast 2 characters"
         if(city.length < 4) errorsObj.city = "City must be atleast 4 characters"
@@ -39,6 +41,7 @@ const CreateRestaurantForm = () => {
             hours: hours,
             image_url: imageUrl
         }
+
         if(Object.keys(errorsObj).length === 0){
             const res = await dispatch(createRestaurant(payload))
             closeModal()
@@ -58,7 +61,7 @@ const CreateRestaurantForm = () => {
                 <div>
                     <form onSubmit={handleCreateRestaurant}>
                         <ul>
-							{Object.values(errors).map(error => <li>{error}</li>)}
+							{Object.values(errors).map(error => <li className='errors'>{error}</li>)}
 						</ul>
 
                         Name
