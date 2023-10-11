@@ -21,10 +21,10 @@ const CreateReviewForm = () => {
     const handleCreateReview = async (e) => {
         e.preventDefault()
 
-        const errorsbObj = {}
+        const errorsObj = {}
 
-        if( starRating < 1 || starRating > 5) errorsbObj.starRating = "Star rating must be between 1 and 5"
-        if(text.length < 10) errorsbObj.text = "Review must be atleast 10 characters"
+        if( starRating < 1 || starRating > 5) errorsObj.starRating = "Star rating must be between 1 and 5"
+        if(text.length < 10) errorsObj.text = "Review must be atleast 10 characters"
 
         const payload = {
             text: text,
@@ -33,12 +33,12 @@ const CreateReviewForm = () => {
             restaurant_id:restaurantId
         }
 
-        if(Object.keys(errorsbObj).length === 0){
-            const res = await dispatch(createReview(payload, restaurantId))
+        if(Object.keys(errorsObj).length === 0){
+            await dispatch(createReview(payload, restaurantId))
             closeModal()
             history.push(`/restaurants/${restaurantId}`)
         }else{
-            setErrors(errorsbObj)
+            setErrors(errorsObj)
         }
         // try{
         //     if(starRating){

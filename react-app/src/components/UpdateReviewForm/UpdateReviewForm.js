@@ -16,11 +16,19 @@ const UpdateReviewForm = ({ review }) => {
     const [ starRating, setStarRating ] = useState(updatedReview.star_rating)
     const { closeModal } = useModal()
     const [ clickStar, setClickStar ] = useState(starRating)
-    const disabledUpdate = starRating < 1 || text.length < 10
+    const [ errors, setErrors ] = useState({})
+    // const disabledUpdate = starRating < 1 || text.length < 10
+
     console.log(updatedReview, review.id)
     console.log(updatedReview.star_rating)
+
     const handleUpdateReview = async (e) => {
         e.preventDefault()
+
+        const errorsObj = {}
+
+        if( starRating < 1 || starRating > 5) errorsObj.starRating = "Star rating must be between 1 and 5"
+        if(text.length < 10) errorsObj.text = "Review must be atleast 10 characters"
 
         const payload = {
             text: text,
@@ -28,20 +36,24 @@ const UpdateReviewForm = ({ review }) => {
             user_id: userId,
             restaurant_id:restaurantId
         }
-        const res = await dispatch(updateReview(payload, updatedReview.id))
-        await dispatch(getAllReviews(restaurantId))
-        closeModal()
-        if(res){
 
+        if(Object.keys(errorsObj).length === 0){
+            await dispatch(updateReview(payload, updatedReview.id))
+            await dispatch(getAllReviews(restaurantId))
+            closeModal()
             history.push(`/restaurants/${restaurantId}`)
+        }else{
+            setErrors(errorsObj)
         }
     }
+
     return(
         <>
             <div className='main-create-review-container'>
                 <h1> Update Review </h1>
                 <div className='create-review-form-container'>
                     <form onSubmit={handleUpdateReview}>
+                        <ul>{Object.values(errors).map(error => (<li>{error}</li>))}</ul>
                         <div className='create-stars-input'>
                             <span
                                 className={clickStar >= 1 ? 'full' : 'blank'}
@@ -99,7 +111,7 @@ const UpdateReviewForm = ({ review }) => {
                             </textarea>
                         </div>
 
-                <button disabled={disabledUpdate} className='create-review-button'type="submit">Update Review</button>
+                <button className='create-review-button'type="submit">Update Review</button>
             </form>
                 </div>
             </div>

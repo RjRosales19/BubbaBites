@@ -1,13 +1,12 @@
 .single-restaurant-container{
     display: grid;
-    border: 1px dashed black;
     justify-items: center;
     justify-content: center;
 }
 
 .restaurant-details-container{
     display: flex;
-    border-radius: 4%;
+    border-radius: 35px;
     margin: 10% 15%;
     background-color: rgb(24, 108, 104);
     height: 20rem;
@@ -16,7 +15,7 @@
 .single-restaurant-image-container img{
     width: 40rem;
     height: 20rem;
-    border-radius: 4%;
+    border-radius: 35px;
 }
 
 .single-restaurant-details-container{
@@ -25,4 +24,14 @@
     justify-content: center;
     align-content: space-evenly;
     border-radius: 5%;
+}
+
+.review-information-container{
+    border-bottom: 1px solid black;
+}
+
+.all-reviews-container{
+    display: grid;
+    width: 100%;
+    gap: 1rem;
 }

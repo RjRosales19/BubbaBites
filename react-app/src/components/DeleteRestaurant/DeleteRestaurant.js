@@ -13,9 +13,9 @@ const DeleteRestaurant = ({ restaurant }) => {
     const handleDeleteRestaurant = async (e) => {
         e.preventDefault()
         await dispatch(deleteRestaurant(restaurant.id))
-        await dispatch(getRestaurants)
+        await dispatch(getRestaurants())
         closeModal()
-        history.push('/restaurants')
+        history.push('/restaurants/owned')
     }
 
     const handleCancelClick = async (e) => {

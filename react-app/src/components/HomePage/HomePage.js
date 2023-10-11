@@ -16,21 +16,23 @@ const HomePage = () => {
         <div className="home-page-main-container">
             <div className="home-first-section-container">
                 {sessionUser ? (
-                        <button onClick={handleFindRestaurants}>Find Restaurants</button>
+                        <button className='find-restaurants-button' onClick={handleFindRestaurants}>Find Restaurants</button>
                 ) : (
                     <>
                         <div>
                             <div>
-                                <button onClick={handleFindRestaurants}>Find Restaurants</button>
+                                <button className='find-restaurants-button' onClick={handleFindRestaurants}>Find Restaurants</button>
                             </div>
                             <div>
                                 <OpenModalButton
                                     buttonText="Sign In"
                                     modalComponent={<LoginFormModal />}
+                                    buttonStyling='sign-in-modal-button'
                                 />
                                 <OpenModalButton
                                     buttonText="Sign Up"
                                     modalComponent={<SignupFormModal />}
+                                    buttonStyling='sign-up-modal-button'
                                 />
                             </div>
                         </div>
@@ -65,22 +67,26 @@ const HomePage = () => {
             </div>
             <div className="home-third-section-container">
                         <img  src="../images/big_first_icon.png"/>
-                    <div>
+                    <div className="third-section-info-container">
                         <h2>Everything you crave</h2>
                         <h4>Your favorite local restaurants</h4>
                         <div>Get a slice of pizza or a whole meal, all in one touch of a button</div>
                         <div>
-                        <a className="get-bubba-button" href="https://github.com/RjRosales19/BubbaBites">Get BubbaBites</a>
+                        <a className="get-bubba-button" href="https://github.com/RjRosales19/BubbaBites">GetBubbaBites</a>
                         </div>
                     </div>
             </div>
-            <div>
-                <a href="https://github.com/RjRosales19">
-                    <img className="linked-in-logo" src="../images/github_logo.png"/>
-                </a>
-                <a href="https://www.linkedin.com/in/ryan-rosales-646437276">
-                    <img className="linked-in-logo" src="../images/linked_in_logo.png"/>
-                </a>
+            <div className="footer-section-container">
+                <div>
+                    <a href="https://github.com/RjRosales19">
+                        <img className="linked-in-logo" src="../images/github_logo.png"/>
+                    </a>
+                </div>
+                <div>
+                    <a href="https://www.linkedin.com/in/ryan-rosales-646437276">
+                        <img className="linked-in-logo" src="../images/linked_in_logo.png"/>
+                    </a>
+                </div>
             </div>
         </div>
     )
