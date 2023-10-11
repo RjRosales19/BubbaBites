@@ -31,9 +31,50 @@
 
 .get-bubba-button{
     border: solid 1px black;
-    border-radius: 7%;
+    border-radius: 21px;
     text-decoration: none;
     color: white;
     background-color: rgb(24, 108, 104);
-    padding: 1% 2%;
+    padding: 7% 14%;
+}
+
+.find-restaurants-button{
+    width: 10rem;
+    height: 2rem;
+    border-radius: 16px;
+    font-weight: bold;
+    background-color: rgb(24, 108, 104);
+    color: white;
+}
+
+.sign-in-modal-button{
+    background-color: rgb(24, 108, 104);
+    width: 5rem;
+    height: 2rem;
+    border-radius: 15px;
+    color: white;
+    font-weight: bold;
+}
+
+.sign-up-modal-button{
+    background-color: white;
+    width: 5rem;
+    height: 2rem;
+    border-radius: 15px;
+    color: black;
+    font-weight: bold;
+}
+
+.third-section-info-container{
+    display: grid;
+    row-gap: 1rem;
+    justify-items: center;
+}
+
+.footer-section-container{
+    width: 100%;
+    border-top: solid 1px black;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
 }

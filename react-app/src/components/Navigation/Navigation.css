@@ -10,12 +10,14 @@
   width: 3rem;
   height: 3rem;
   border: none;
+  background: white;
 }
 
 .navigation-bar-container{
   display: flex;
   justify-content: space-around;
   align-items: center;
+  border-bottom: solid 1px black;
 }
 
 .nav-icon{
@@ -25,4 +27,20 @@
 
 .title-logo{
   width: 11rem;
+}
+
+.drop-down-menu{
+  display: grid;
+    row-gap: 9px;
+    justify-items: end;
+}
+
+.manage-restaurants-button{
+  border: none;
+  background: none;
+  color: rgb(24, 108, 104);
+  cursor: pointer;
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: medium;
 }
