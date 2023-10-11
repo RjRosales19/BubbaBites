@@ -64,6 +64,8 @@ const SingleRestaurant = () => {
                         </div>
                     </div>
                 </div>
+                <h3>Ratings & Reviews</h3>
+                <div>{reviews.length} public reviews</div>
                 {user && !(restaurantOwner ||
                 reviewOwner) &&
                     <div>
@@ -74,8 +76,6 @@ const SingleRestaurant = () => {
                         />
                     </div>
                 }
-                <h3>Ratings & Reviews</h3>
-                <h4>{reviews.length} public reviews</h4>
             {reviews.length ?
             <div className="all-reviews-container">
                 {reviews.map((review) => { return(
