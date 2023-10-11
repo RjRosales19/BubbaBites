@@ -25,6 +25,7 @@ const ManageRestaurants = () => {
             <div>
                         <OpenModalButton
                         buttonText="Create a Restaurant"
+                        buttonStyling='create-restaurant-button'
                         modalComponent={<CreateRestaurantForm />}
                         />
                 <div className="all-restaurants-container">
@@ -37,10 +38,12 @@ const ManageRestaurants = () => {
                             <div className="manage-restaurant-buttons">
                                 <OpenModalButton
                                     buttonText="Update"
+                                    buttonStyling='update-restaurant-button'
                                     modalComponent={<UpdateRestaurantForm restaurant={restaurant}/>}
                                 />
                                 <OpenModalButton
                                     buttonText="Delete"
+                                    buttonStyling='delete-restaurant-button'
                                     modalComponent={<DeleteRestaurant restaurant={restaurant}/>}
                                 />
                             </div>
