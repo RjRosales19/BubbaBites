@@ -8,7 +8,9 @@ import { thunkGetAllItems } from "../../store/items"
 import CreateReviewForm from "../CreateReviewForm/CreateReviewForm"
 import UpdateReviewForm from '../UpdateReviewForm/UpdateReviewForm'
 import DeleteReview from "../DeleteReview/DeleteReview"
+import DeleteItem from "../DeleteItem/DeleteItem"
 import './SingleRestaurant.css'
+import UpdateItem from "../UpdateItem/UpdateItem"
 
 const SingleRestaurant = () => {
     const dispatch = useDispatch()
@@ -124,9 +126,19 @@ const SingleRestaurant = () => {
                             <div>
                                 <img style={{width: "20rem"}}src={item.image_url}></img>
                                 <h3>{item.name}</h3>
-                                <div>{item.description}</div>
+                                {/* <div>{item.description}</div> */}
                                 <div>${item.price}</div>
                             </div>
+                            <OpenModalButton
+                                buttonText='Delete'
+                                buttonStyling='delete-restaurant-button'
+                                modalComponent={<DeleteItem item={item}/>}
+                            />
+                            <OpenModalButton
+                                buttonText='Update'
+                                buttonStyling='update-restaurant-button'
+                                modalComponent={<UpdateItem item={item}/>}
+                            />
                         </>
                     )
                 })}
