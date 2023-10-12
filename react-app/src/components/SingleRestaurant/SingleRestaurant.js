@@ -4,6 +4,7 @@ import { getSelectedRestaurant } from "../../store/restaurants"
 import { useParams } from 'react-router-dom'
 import OpenModalButton from "../OpenModalButton"
 import { getAllReviews } from "../../store/reviews"
+import { thunkGetAllItems } from "../../store/items"
 import CreateReviewForm from "../CreateReviewForm/CreateReviewForm"
 import UpdateReviewForm from '../UpdateReviewForm/UpdateReviewForm'
 import DeleteReview from "../DeleteReview/DeleteReview"
@@ -15,6 +16,9 @@ const SingleRestaurant = () => {
     const user = useSelector( state=> state.session.user)
     const restaurant = useSelector( state => state.restaurants.singleRestaurant )
     const reviews = Object.values(useSelector(state => state.reviews.allReviews))
+    const items = useSelector(state => state.items.allItems)
+    const itemsList = Object.values(items)
+    console.log(itemsList)
     // console.log((reviews).find(review => review.user_id === user.id))
     console.log(user)
     let newCurrentDate
@@ -31,6 +35,7 @@ const SingleRestaurant = () => {
     useEffect(() => {
         dispatch(getSelectedRestaurant(restaurantId))
         dispatch(getAllReviews(restaurantId))
+        dispatch(thunkGetAllItems(restaurantId))
     }, [dispatch, restaurantId])
 
     if(!user) {
@@ -111,6 +116,20 @@ const SingleRestaurant = () => {
             </div>
             : null }
 
+            </div>
+            <div>
+                {itemsList.map(item => {
+                    return(
+                        <>
+                            <div>
+                                <img style={{width: "20rem"}}src={item.image_url}></img>
+                                <h3>{item.name}</h3>
+                                <div>{item.description}</div>
+                                <div>${item.price}</div>
+                            </div>
+                        </>
+                    )
+                })}
             </div>
         </>
     )
