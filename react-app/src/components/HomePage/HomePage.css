@@ -1,7 +1,8 @@
 .home-page-main-container{
-    display: grid;
-    justify-items: center;
+    display: flex;
     margin: 1rem 14rem;
+    flex-direction: column;
+    align-items: center;
 }
 
 .home-first-section-container{
