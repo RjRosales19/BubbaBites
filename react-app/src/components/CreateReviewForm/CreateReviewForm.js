@@ -24,7 +24,11 @@ const CreateReviewForm = () => {
         const errorsObj = {}
 
         if( starRating < 1 || starRating > 5) errorsObj.starRating = "Star rating must be between 1 and 5"
-        if(text.length < 10) errorsObj.text = "Review must be atleast 10 characters"
+        if(text.length < 10){
+            errorsObj.text = "Review must be atleast 10 characters"
+        }else if(text.length > 100){
+            errorsObj.text = "Review must be less than 100 characters"
+        }
 
         const payload = {
             text: text,

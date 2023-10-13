@@ -45,6 +45,7 @@
     font-weight: bold;
     background-color: rgb(24, 108, 104);
     color: white;
+    cursor: pointer;
 }
 
 .sign-in-modal-button{
@@ -54,6 +55,7 @@
     border-radius: 15px;
     color: white;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .sign-up-modal-button{
@@ -63,6 +65,7 @@
     border-radius: 15px;
     color: black;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .third-section-info-container{

@@ -33,4 +33,9 @@
     border-radius: 3px;
     color: white;
     margin: 4% 0%;
+    cursor: pointer;
+}
+
+.create-stars-input > span{
+    cursor: pointer
 }

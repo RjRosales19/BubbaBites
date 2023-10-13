@@ -9,6 +9,7 @@
     font-weight: bold;
     border: none;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .delete-button{
@@ -16,4 +17,5 @@
     color: red;
     border: none;
     text-decoration: underline;
+    cursor: pointer;
 }
