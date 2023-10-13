@@ -15,69 +15,91 @@ const SingleRestaurant = () => {
     const user = useSelector( state=> state.session.user)
     const restaurant = useSelector( state => state.restaurants.singleRestaurant )
     const reviews = Object.values(useSelector(state => state.reviews.allReviews))
-    console.log((reviews).find(review => review.user_id === user.id))
+    // console.log((reviews).find(review => review.user_id === user.id))
     console.log(user)
-
+    let newCurrentDate
     const restaurantOwner = user && restaurant.user_id === user.id
     const reviewOwner = user && reviews.find((review) => review.user_id === user.id)
-    // const initial = 0
-    // const reviewsAvg = (reviews.map(review => review.star_rating.reduce((acc, curr) => acc + curr, initial )))/reviews.length
-
+    const initial = 0
+    // const reviewsAvg = reviews.map(review => review.star_rating.reduce((acc, curr) => acc + curr, initial )))/reviews.length
+    const reviewsAvg = (reviews.map(review => review.star_rating).reduce((acc,curr) => acc+curr, initial))/reviews.length
+    const defaultImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/310px-Placeholder_view_vector.svg.png"
+    const imageError = (e) => {
+        e.target.src = defaultImage
+    }
+    console.log(reviewsAvg)
     useEffect(() => {
         dispatch(getSelectedRestaurant(restaurantId))
         dispatch(getAllReviews(restaurantId))
     }, [dispatch, restaurantId])
 
+    if(!user) {
+        const user = 0
+    }
+    if(reviews.length < 0) {
+        return null
+    }else{
+        const review = reviews.find((review) => review.restaurant_id === restaurant.id)
+        const newDate = new Date(review?.created_at).getTime()
+        if(newDate){
+            newCurrentDate = new Intl.DateTimeFormat('en-us').format(newDate)
+            console.log(newCurrentDate)
+        }
+    }
 
-    if(!reviews) return null
-    if(!user) return null
+
 
     return(
         <>
             <div className="single-restaurant-container">
                 <div className="restaurant-details-container">
-                    <div className="single-restaurant-image-container"><img alt={`${restaurant.name}`} src={ restaurant.image_url }/></div>
+                    <div className="single-restaurant-image-container">
+                    <img onError={imageError} src={restaurant.image_url ? restaurant.image_url : defaultImage } alt={`${restaurant.name}`}/>
+                    </div>
 
                     <div className="single-restaurant-details-container">
                         <h2>{ restaurant.name }</h2>
-                        <div>{ restaurant.address }</div>
-                        <div>{ restaurant.city }</div>
-                        <div>{ restaurant.state }</div>
-                        <div>{ restaurant.hours }</div>
+                        <div>Location:{ restaurant.address }
+                            <div>{ restaurant.city }, { restaurant.state }</div>
+                        </div>
+                        <div>Hours:{ restaurant.hours }</div>
 
-                        {/* <div>{ reviewsAvg.toFixed(1) }</div> */}
+                        {/* <div>Reviews Average:{ reviewsAvg.toFixed(1) }</div> */}
                         <div>
-                            {/* (<div>{ reviews.length}</div>)+ */}
+                            {/* <div>Total Reviews { reviews.length}</div> */}
                         </div>
                     </div>
                 </div>
+                <h3>Ratings & Reviews</h3>
+                <div>{reviews.length} public reviews</div>
                 {user && !(restaurantOwner ||
                 reviewOwner) &&
                     <div>
                         <OpenModalButton
+                        buttonStyling='create-restaurant-button'
                         buttonText="Add Review"
                         modalComponent={<CreateReviewForm />}
                         />
                     </div>
                 }
-                <h3>Reviews</h3>
             {reviews.length ?
-            <div>
-                <div>{reviews.length} public reviews</div>
+            <div className="all-reviews-container">
                 {reviews.map((review) => { return(
-                    <div>
-                        <div>{review.user_id}</div>
-                        <div>{review.star_rating.toFixed(1)}</div>
+                    <div className="review-information-container">
                         <div>{review.text}</div>
-                        <div>{review.created_at}</div>
+                        <div>
+                            {review.user_id} · <i className="fa fa-star"></i>{review.star_rating.toFixed(1)} ·  {newCurrentDate}
+                        </div>
                         {user && (user.id === review.user_id) &&
                         (<>
                             <OpenModalButton
-                                buttonText='Edit Review'
+                                buttonText='Update'
+                                buttonStyling='update-restaurant-button'
                                 modalComponent={<UpdateReviewForm review={review}/>}
                             />
                             <OpenModalButton
-                                buttonText='Delete Review'
+                                buttonText='Delete'
+                                buttonStyling='delete-restaurant-button'
                                 modalComponent={<DeleteReview review={review}/>}
                             />
                         </>)

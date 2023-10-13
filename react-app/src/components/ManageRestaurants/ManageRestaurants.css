@@ -4,10 +4,30 @@
     justify-content: flex-end;
 }
 
-.manage-restaurant-buttons button {
+.delete-restaurant-button{
     border: none;
     background: none;
     color: red;
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: medium;
+}
+
+.update-restaurant-button{
+    border: none;
+    background: none;
+    color: navy;
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: medium;
+}
+
+.create-restaurant-button{
+    border: none;
+    background: none;
+    color: rgb(24, 108, 104);
     cursor: pointer;
     text-decoration: underline;
     font-weight: bold;

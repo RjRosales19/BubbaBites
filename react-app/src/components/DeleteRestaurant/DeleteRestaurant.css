@@ -8,7 +8,7 @@
 .cancel-delete-button{
     font-weight: bold;
     border: none;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .delete-button{

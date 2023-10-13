@@ -1,4 +1,4 @@
-import { useState } from 'react';
+ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createReview } from '../../store/reviews';
 import { useHistory } from 'react-router-dom';
@@ -14,10 +14,17 @@ const CreateReviewForm = () => {
     const [ starRating, setStarRating ] = useState(0)
     const { closeModal } = useModal()
     const [ clickStar, setClickStar ] = useState(starRating)
-    const [ errors, setErrors ] = useState([])
+    const [ errors, setErrors ] = useState({})
+
+    // const disabledCreate = starRating < 1 || text.length < 10
 
     const handleCreateReview = async (e) => {
         e.preventDefault()
+
+        const errorsObj = {}
+
+        if( starRating < 1 || starRating > 5) errorsObj.starRating = "Star rating must be between 1 and 5"
+        if(text.length < 10) errorsObj.text = "Review must be atleast 10 characters"
 
         const payload = {
             text: text,
@@ -25,18 +32,30 @@ const CreateReviewForm = () => {
             user_id: userId,
             restaurant_id:restaurantId
         }
-        try{
-            const res = await dispatch(createReview(payload, restaurantId))
-            if(res){
-                closeModal()
-                setErrors(res.errors)
-                console.log(res)
-            }
-        }catch{
-            history.push(`/restaurants/${restaurantId}`)
 
+        if(Object.keys(errorsObj).length === 0){
+            await dispatch(createReview(payload, restaurantId))
+            closeModal()
+            history.push(`/restaurants/${restaurantId}`)
+        }else{
+            setErrors(errorsObj)
         }
-        console.log(errors)
+        // try{
+        //     if(starRating){
+        //         if(res){
+        //             setErrors(res)
+        //             console.log(res)
+        //         }
+        //     }else if(text.length > 10){
+        //         setErrors(["Minimum of 10 characters is required"])
+        //     }
+        //     else{
+
+        //         setErrors(["Star Rating is required"])
+        //     }
+        // }catch{
+
+        // }
         // if(res){
         //     }else{
         //         setErrors(['Field is required'])
@@ -50,7 +69,7 @@ const CreateReviewForm = () => {
                 <h1> Add a Review </h1>
                 <div className='create-review-form-container'>
                     <form onSubmit={handleCreateReview}>
-                        <ul>{errors.map(error => (<div>{error}</div>))}</ul>
+                        <ul>{Object.values(errors).map(error => (<li className='errors'>{error}</li>))}</ul>
                         <div className='create-stars-input'>
                             <span
                                 className={clickStar >= 1 ? 'full' : 'blank'}
@@ -102,6 +121,8 @@ const CreateReviewForm = () => {
                             required
                             onChange={(e) => setText(e.target.value)}
                             placeholder="Helpful reviews mention specific items and describe their quality and taste"
+                            minLength='10'
+                            maxLength='200'
                             >
                             </textarea>
                             {/* <input

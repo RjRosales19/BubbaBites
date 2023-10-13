@@ -54,6 +54,7 @@ function LoginFormModal() {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   placeholder="Email"
+                  minLength='6'
                   maxLength="50"
                 />
               </label>

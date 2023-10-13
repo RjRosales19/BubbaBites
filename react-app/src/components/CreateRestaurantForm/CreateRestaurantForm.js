@@ -7,17 +7,30 @@ import './CreateRestaurantForm.css'
 const CreateRestaurantForm = () => {
     const history = useHistory()
     const dispatch = useDispatch()
-    const userId = useSelector( state => state.session.user.id)
+    const userId = useSelector( state => state.session.user?.id)
     const [ name, setName ] = useState('')
     const [ address, setAddress ] = useState('')
     const [ state, setState ] = useState('')
     const [ city, setCity ] = useState('')
     const [ hours, setHours ] = useState('')
     const [ imageUrl , setImageUrl ] = useState('')
+    const [ errors, setErrors ] = useState({})
     const { closeModal } = useModal();
+
+    if(!userId) history.push('/restaurants')
 
     const handleCreateRestaurant = async (e) => {
         e.preventDefault()
+
+        const errorsObj = {}
+
+        if(name.length < 4) errorsObj.name = "Name must be atleast 4 characters"
+        if(address.length < 5) errorsObj.address = "Address must be atleast 5 characters"
+        if(state.length < 2) errorsObj.state = "State must be atleast 2 characters"
+        if(city.length < 4) errorsObj.city = "City must be atleast 4 characters"
+        if(hours.length < 4 ) errorsObj.hours = "Hours must be atleast 4 characters"
+        if(imageUrl.length < 10) errorsObj.imageUrl = "Image Url must be atleast 10 characters"
+        if(!imageUrl.endsWith('.jpg') && !imageUrl.endsWith('.png') && !imageUrl.endsWith('.jpeg')) errorsObj.imageUrl = "Image Url must be a .jpg, .png, or .jpeg"
 
         const payload = {
             name: name,
@@ -29,9 +42,13 @@ const CreateRestaurantForm = () => {
             image_url: imageUrl
         }
 
-        const res = await dispatch(createRestaurant(payload))
-        closeModal()
-        history.push(`/restaurants/${res.id}`)
+        if(Object.keys(errorsObj).length === 0){
+            const res = await dispatch(createRestaurant(payload))
+            closeModal()
+            history.push(`/restaurants/${res.id}`)
+        }else{
+            setErrors(errorsObj)
+        }
     }
 
     return(
@@ -43,6 +60,9 @@ const CreateRestaurantForm = () => {
             <div className='create-restaurant-form-container'>
                 <div>
                     <form onSubmit={handleCreateRestaurant}>
+                        <ul>
+							{Object.values(errors).map(error => <li className='errors'>{error}</li>)}
+						</ul>
 
                         Name
                         <div>
