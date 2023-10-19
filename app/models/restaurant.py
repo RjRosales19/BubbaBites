@@ -18,7 +18,8 @@ class Restaurant(db.Model):
 
     user = db.relationship('User', back_populates='restaurant')
     review = db.relationship('Review', back_populates='restaurant', cascade='all, delete-orphan')
-
+    item = db.relationship('Item', back_populates='restaurant', cascade='all, delete-orphan')
+    
     def to_dict(self):
         return {
             'id': self.id,

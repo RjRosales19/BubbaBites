@@ -85,7 +85,7 @@ const UpdateRestaurantForm = ({restaurant}) => {
 							{Object.values(errors).map(error => <li className='errors'>{error}</li>)}
 						</ul>
 
-                Name
+                        Name
                         <div>
                             <label>
                                 <input

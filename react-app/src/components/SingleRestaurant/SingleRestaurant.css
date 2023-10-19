@@ -35,3 +35,18 @@
     width: 100%;
     gap: 1rem;
 }
+
+.all-items-container{
+    display: grid;
+    justify-content: center;
+    justify-items: end;
+}
+
+.item-info-container{
+    display: grid;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin: 15px;
+    padding: 5px;
+    width: 60rem;
+}
