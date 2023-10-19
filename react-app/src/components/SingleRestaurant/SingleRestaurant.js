@@ -119,26 +119,28 @@ const SingleRestaurant = () => {
             : null }
 
             </div>
-            <div>
+            <div className="all-items-container">
                 {itemsList.map(item => {
                     return(
                         <>
-                            <div>
+                            <div className="item-info-container">
                                 <img style={{width: "20rem"}}src={item.image_url}></img>
                                 <h3>{item.name}</h3>
-                                {/* <div>{item.description}</div> */}
-                                <div>${item.price}</div>
+                                <div>{item.description}</div>
+                                <h4>${item.price}</h4>
                             </div>
-                            <OpenModalButton
-                                buttonText='Delete'
-                                buttonStyling='delete-restaurant-button'
-                                modalComponent={<DeleteItem item={item}/>}
-                            />
-                            <OpenModalButton
-                                buttonText='Update'
-                                buttonStyling='update-restaurant-button'
-                                modalComponent={<UpdateItem item={item}/>}
-                            />
+                            <div>
+                                <OpenModalButton
+                                    buttonText='Update'
+                                    buttonStyling='update-restaurant-button'
+                                    modalComponent={<UpdateItem item={item}/>}
+                                />
+                                <OpenModalButton
+                                    buttonText='Delete'
+                                    buttonStyling='delete-restaurant-button'
+                                    modalComponent={<DeleteItem item={item}/>}
+                                />
+                            </div>
                         </>
                     )
                 })}
