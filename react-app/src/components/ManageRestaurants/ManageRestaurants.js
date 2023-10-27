@@ -6,6 +6,7 @@ import UpdateRestaurantForm from '../UpdateRestaurantForm/UpdateRestaurantForm'
 import DeleteRestaurant from '../DeleteRestaurant/DeleteRestaurant'
 import OpenModalButton from "../OpenModalButton"
 import CreateRestaurantForm from "../CreateRestaurantForm/CreateRestaurantForm"
+import CreateItemForm from "../CreateItemForm/CreateItemForm"
 import './ManageRestaurants.css'
 const ManageRestaurants = () => {
     const dispatch = useDispatch()
@@ -40,6 +41,11 @@ const ManageRestaurants = () => {
                                 <div>{restaurant.name}</div>
                             </Link>
                             <div className="manage-restaurant-buttons">
+                                <OpenModalButton
+                                    buttonText="Add Item"
+                                    buttonStyling='update-restaurant-button'
+                                    modalComponent={<CreateItemForm restaurant={restaurant}/>}
+                                />
                                 <OpenModalButton
                                     buttonText="Update"
                                     buttonStyling='update-restaurant-button'

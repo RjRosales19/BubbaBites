@@ -4,10 +4,13 @@ import { getSelectedRestaurant } from "../../store/restaurants"
 import { useParams } from 'react-router-dom'
 import OpenModalButton from "../OpenModalButton"
 import { getAllReviews } from "../../store/reviews"
+import { thunkGetAllItems } from "../../store/items"
 import CreateReviewForm from "../CreateReviewForm/CreateReviewForm"
 import UpdateReviewForm from '../UpdateReviewForm/UpdateReviewForm'
 import DeleteReview from "../DeleteReview/DeleteReview"
+import DeleteItem from "../DeleteItem/DeleteItem"
 import './SingleRestaurant.css'
+import UpdateItem from "../UpdateItem/UpdateItem"
 
 const SingleRestaurant = () => {
     const dispatch = useDispatch()
@@ -15,6 +18,9 @@ const SingleRestaurant = () => {
     const user = useSelector( state=> state.session.user)
     const restaurant = useSelector( state => state.restaurants.singleRestaurant )
     const reviews = Object.values(useSelector(state => state.reviews.allReviews))
+    const items = useSelector(state => state.items.allItems)
+    const itemsList = Object.values(items)
+    console.log(itemsList)
     // console.log((reviews).find(review => review.user_id === user.id))
     console.log(user)
     let newCurrentDate
@@ -31,6 +37,7 @@ const SingleRestaurant = () => {
     useEffect(() => {
         dispatch(getSelectedRestaurant(restaurantId))
         dispatch(getAllReviews(restaurantId))
+        dispatch(thunkGetAllItems(restaurantId))
     }, [dispatch, restaurantId])
 
     if(!user) {
@@ -111,6 +118,32 @@ const SingleRestaurant = () => {
             </div>
             : null }
 
+            </div>
+            <div className="all-items-container">
+                {itemsList.map(item => {
+                    return(
+                        <>
+                            <div className="item-info-container">
+                                <img style={{width: "20rem"}}src={item.image_url}></img>
+                                <h3>{item.name}</h3>
+                                <div>{item.description}</div>
+                                <h4>${item.price}</h4>
+                            </div>
+                            <div>
+                                <OpenModalButton
+                                    buttonText='Update'
+                                    buttonStyling='update-restaurant-button'
+                                    modalComponent={<UpdateItem item={item}/>}
+                                />
+                                <OpenModalButton
+                                    buttonText='Delete'
+                                    buttonStyling='delete-restaurant-button'
+                                    modalComponent={<DeleteItem item={item}/>}
+                                />
+                            </div>
+                        </>
+                    )
+                })}
             </div>
         </>
     )

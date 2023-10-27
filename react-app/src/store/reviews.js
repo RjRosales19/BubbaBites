@@ -5,22 +5,22 @@ const POST_REVIEW =  'reviews/POST_REVIEW';
 const EDIT_REVIEW = 'reviews/EDIT_REVIEW';
 const REMOVE_REVIEW = 'reviews/REMOVE_REVIEW'
 // ACTION CREATOR
-export const readReviews = (reviews) => ({
+const readReviews = (reviews) => ({
     type: READ_REVIEWS,
     payload: reviews,
 })
 
-export const postReview = (review) => ({
+const postReview = (review) => ({
     type: POST_REVIEW,
     payload: review
 })
 
-export const editReview = (review) => ({
+const editReview = (review) => ({
     type: EDIT_REVIEW,
     payload: review
 })
 
-export const removeReview = (reviewId) => ({
+const removeReview = (reviewId) => ({
     type: REMOVE_REVIEW,
     payload: reviewId
 })
@@ -68,7 +68,7 @@ export const updateReview = (review, reviewId) => async (dispatch) => {
     }
 }
 
-export const deleteReview = (reviewId ) => async (dispatch) => {
+export const deleteReview = (reviewId) => async (dispatch) => {
     const res = await fetch(`/api/reviews/${reviewId}`, {
         method: 'DELETE'
     })
