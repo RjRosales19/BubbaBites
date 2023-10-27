@@ -38,7 +38,7 @@ const ManageRestaurants = () => {
                         <div className="restaurant-tile-container">
                             <Link to={`/restaurants/${restaurant.id}`}>
                                 <img onError={imageError} src={restaurant.image_url ? restaurant.image_url : defaultImage } alt={`${restaurant.name}`}/>
-                                <div>{restaurant.name}</div>
+                                <div style={{fontSize: "x-large"}}>{restaurant.name}</div>
                             </Link>
                             <div className="manage-restaurant-buttons">
                                 <OpenModalButton

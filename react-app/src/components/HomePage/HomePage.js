@@ -78,15 +78,19 @@ const HomePage = () => {
             </div>
             <div className="footer-section-container">
                 <div>
+                    <a className="footer-created-by" href="https://docs.google.com/document/d/1fEAUyrAnRY5Am_5U10kRYk2q5CQGqRflcPIgYoiNBQk/edit"><p>Created by: Ryan Rosales</p></a>
+                </div>
+                <div>
                     <a href="https://github.com/RjRosales19">
                         <img className="linked-in-logo" src="../images/github_logo.png"/>
                     </a>
                 </div>
                 <div>
-                    <a href="https://www.linkedin.com/in/ryan-rosales-646437276">
+                    <a href="https://www.linkedin.com/in/ryan-joshua-rosales-646437276">
                         <img className="linked-in-logo" src="../images/linked_in_logo.png"/>
                     </a>
                 </div>
+                    <p>© 2023 BubbaBites</p>
             </div>
         </div>
     )
