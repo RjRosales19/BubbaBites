@@ -30,6 +30,7 @@ const SingleRestaurant = () => {
     // const reviewsAvg = reviews.map(review => review.star_rating.reduce((acc, curr) => acc + curr, initial )))/reviews.length
     const reviewsAvg = (reviews.map(review => review.star_rating).reduce((acc,curr) => acc+curr, initial))/reviews.length
     const defaultImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/310px-Placeholder_view_vector.svg.png"
+    console.log(user)
     const imageError = (e) => {
         e.target.src = defaultImage
     }
@@ -41,7 +42,9 @@ const SingleRestaurant = () => {
     }, [dispatch, restaurantId])
 
     if(!user) {
-        const user = 0
+        // const user = 0
+        const user = false
+
     }
     if(reviews.length < 0) {
         return null
@@ -66,10 +69,12 @@ const SingleRestaurant = () => {
 
                     <div className="single-restaurant-details-container">
                         <h2>{ restaurant.name }</h2>
-                        <div>Location:{ restaurant.address }
-                            <div>{ restaurant.city }, { restaurant.state }</div>
+                        <div>Location:
+                            <div>{ restaurant.address }{ restaurant.city }, { restaurant.state }</div>
                         </div>
-                        <div>Hours:{ restaurant.hours }</div>
+                        <div>Hours:
+                            <div>{ restaurant.hours }</div>
+                        </div>
 
                         {/* <div>Reviews Average:{ reviewsAvg.toFixed(1) }</div> */}
                         <div>
@@ -77,26 +82,27 @@ const SingleRestaurant = () => {
                         </div>
                     </div>
                 </div>
-                <h3>Ratings & Reviews</h3>
-                <div>{reviews.length} public reviews</div>
-                {user && !(restaurantOwner ||
-                reviewOwner) &&
-                    <div>
-                        <OpenModalButton
-                        buttonStyling='create-restaurant-button'
-                        buttonText="Add Review"
-                        modalComponent={<CreateReviewForm />}
-                        />
-                    </div>
-                }
+
+                <div className="ratings-rewiews-container">
+                    <h3>Ratings & Reviews</h3>
+                    <div>{reviews.length} public reviews</div>
+                    {user && !(restaurantOwner || reviewOwner) &&
+                        <div>
+                            <OpenModalButton
+                            buttonStyling='create-restaurant-button'
+                            buttonText="Add Review"
+                            modalComponent={<CreateReviewForm />}
+                            />
+                        </div>
+                    }
             {reviews.length ?
             <div className="all-reviews-container">
                 {reviews.map((review) => { return(
                     <div className="review-information-container">
-                        <div>{review.text}</div>
                         <div>
-                            {review.user_id} · <i className="fa fa-star"></i>{review.star_rating.toFixed(1)} ·  {newCurrentDate}
+                            {review.user_id === user.id ? user?.username : review.user_id}  · <i className="fa fa-star" style={{color: "rgb(24, 108, 104)"}}></i>{review.star_rating.toFixed(1)} ·  {newCurrentDate}
                         </div>
+                        <div>{review.text}</div>
                         {user && (user.id === review.user_id) &&
                         (<>
                             <OpenModalButton
@@ -117,33 +123,40 @@ const SingleRestaurant = () => {
                 ).reverse()}
             </div>
             : null }
+                </div>
+
+
 
             </div>
-            <div className="all-items-container">
-                {itemsList.map(item => {
-                    return(
-                        <>
-                            <div className="item-info-container">
-                                <img style={{width: "20rem"}}src={item.image_url}></img>
-                                <h3>{item.name}</h3>
-                                <div>{item.description}</div>
-                                <h4>${item.price}</h4>
-                            </div>
-                            <div>
-                                <OpenModalButton
-                                    buttonText='Update'
-                                    buttonStyling='update-restaurant-button'
-                                    modalComponent={<UpdateItem item={item}/>}
-                                />
-                                <OpenModalButton
-                                    buttonText='Delete'
-                                    buttonStyling='delete-restaurant-button'
-                                    modalComponent={<DeleteItem item={item}/>}
-                                />
-                            </div>
-                        </>
-                    )
-                })}
+            <div className="menu-items-container">
+                <h3>Menu Items</h3>
+
+                <div className="all-items-container">
+                    {itemsList.map(item => {
+                        return(
+                            <>
+                                <div className="item-info-container">
+                                    <img style={{width: "20rem", borderRadius:"10px"}}src={item.image_url}></img>
+                                    <h3>{item.name}</h3>
+                                    <div>{item.description}</div>
+                                    <h4>${item.price}</h4>
+                                </div>
+                                <div>
+                                    <OpenModalButton
+                                        buttonText='Update'
+                                        buttonStyling='update-restaurant-button'
+                                        modalComponent={<UpdateItem item={item}/>}
+                                    />
+                                    <OpenModalButton
+                                        buttonText='Delete'
+                                        buttonStyling='delete-restaurant-button'
+                                        modalComponent={<DeleteItem item={item}/>}
+                                    />
+                                </div>
+                            </>
+                        )
+                    })}
+                </div>
             </div>
         </>
     )

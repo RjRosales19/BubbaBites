@@ -1,5 +1,9 @@
 .profile-dropdown {
   position: absolute;
+  background: white;
+  border: 1px solid black;
+  border-radius: 2rem;
+  padding: 10px;
 }
 
 .hidden {
@@ -18,12 +22,12 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border-bottom: solid 1px black;
+  border-bottom: solid 1px rgb(172 169 169);
 }
 
 .nav-icon{
   width: 3rem;
-  border-radius: 20%;
+  border-radius: 5px;
 }
 
 .title-logo{
@@ -32,8 +36,9 @@
 
 .drop-down-menu{
   display: grid;
-    row-gap: 9px;
-    justify-items: end;
+  row-gap: 9px;
+  justify-items: end;
+  justify-items: center;
 }
 
 .manage-restaurants-button{

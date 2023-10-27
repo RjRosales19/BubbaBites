@@ -11,7 +11,7 @@ const AllRestaurants = () => {
     const imageError = (e) => {
         e.target.src = defaultImage
     }
-    
+
     useEffect(() => {
         dispatch(getRestaurants())
     }, [dispatch])
@@ -26,9 +26,22 @@ const AllRestaurants = () => {
                     <div className='restaurant-tile-container'>
                         <Link to={`/restaurants/${restaurant.id}`}>
                             <img onError={imageError} src={restaurant.image_url ? restaurant.image_url : defaultImage } alt={`${restaurant.name}`}/>
+                                <div style={{fontSize: "x-large"}}>{restaurant.name}</div>
                             <div className='restaurant-tile-info-container'>
-                                <div>{restaurant.name}</div>
-                                <div>{restaurant.hours}</div>
+                                <div>H:
+                                    <div>
+                                        {restaurant.hours}
+                                    </div>
+                                </div>
+                                <div>
+                                    Address:
+                                    <div>
+                                        {restaurant.address}
+                                    </div>
+                                    <div>
+                                        { restaurant.city }, { restaurant.state}
+                                    </div>
+                                </div>
                             </div>
                         </Link>
                     </div>

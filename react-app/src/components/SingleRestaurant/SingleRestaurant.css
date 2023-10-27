@@ -16,6 +16,7 @@
     width: 40rem;
     height: 20rem;
     border-radius: 35px;
+    object-fit: cover;
 }
 
 .single-restaurant-details-container{
@@ -24,9 +25,11 @@
     justify-content: center;
     align-content: space-evenly;
     border-radius: 5%;
+    color: azure;
 }
 
 .review-information-container{
+    padding-bottom: 1rem;
     border-bottom: 1px solid black;
 }
 
@@ -49,4 +52,21 @@
     margin: 15px;
     padding: 5px;
     width: 60rem;
+}
+
+/* .fa-star{
+    color: rgb(24, 108, 104);
+} */
+
+.ratings-rewiews-container{
+    display: grid;
+    justify-items: center;
+    width: 100%;
+    align-items: center;
+    row-gap: 1rem;
+}
+
+.menu-items-container{
+    display: grid;
+    justify-items: center;
 }
