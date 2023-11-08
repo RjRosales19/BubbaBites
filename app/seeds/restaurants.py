@@ -56,6 +56,132 @@ def seed_restaurants():
         hours="09:00 - 18:00",
         image_url="https://media.istockphoto.com/id/1010677810/photo/traditional-uzbek-oriental-cuisine-uzbek-family-table-from-different-dishes-for-the-new-year.jpg?s=612x612&w=0&k=20&c=bCezyNqQUeYWFbodrf2kloJJBPPOeXbr4Fwd6B-wfxM="
     )
+    restaurant7 = Restaurant(
+        name='Adel Halal',
+        user_id=3,
+        address="81st Street",
+        city="New York",
+        state="New York",
+        hours="09:00 - 18:00",
+        image_url="https://media.istockphoto.com/id/1010677810/photo/traditional-uzbek-oriental-cuisine-uzbek-family-table-from-different-dishes-for-the-new-year.jpg?s=612x612&w=0&k=20&c=bCezyNqQUeYWFbodrf2kloJJBPPOeXbr4Fwd6B-wfxM="
+    )
+    restaurant8 = Restaurant(
+        name='Taste of Tuscany',
+        user_id=4,
+        address='123 Main Street',
+        city='San Francisco',
+        state='California',
+        hours='11:30 - 21:00',
+        image_url='https://example.com/taste-of-tuscany.jpg'
+    )
+    restaurant9 = Restaurant(
+        name='Spice Palace',
+        user_id=5,
+        address='45 Curry Lane',
+        city='Houston',
+        state='Texas',
+        hours='12:00 - 22:00',
+        image_url='https://example.com/spice-palace.jpg'
+    )
+    restaurant10 = Restaurant(
+        name='Sushi Delight',
+        user_id=5,
+        address='789 Sushi Avenue',
+        city='Los Angeles',
+        state='California',
+        hours='17:00 - 23:00',
+        image_url='https://example.com/sushi-delight.jpg'
+    )
+    restaurant11 = Restaurant(
+        name='Mama Mia Pizzeria',
+        user_id=6,
+        address='567 Pizza Street',
+        city='Chicago',
+        state='Illinois',
+        hours='11:00 - 20:00',
+        image_url='https://example.com/mama-mia-pizzeria.jpg'
+    )
+    restaurant12 = Restaurant(
+        name='The Veggie Patch',
+        user_id=6,
+        address='101 Green Avenue',
+        city='Seattle',
+        state='Washington',
+        hours='09:30 - 19:30',
+        image_url='https://example.com/veggie-patch.jpg'
+    )
+    restaurant13 = Restaurant(
+        name='Café Parisienne',
+        user_id=7,
+        address='33 French Street',
+        city='New Orleans',
+        state='Louisiana',
+        hours='08:00 - 18:00',
+        image_url='https://example.com/cafe-parisienne.jpg'
+    )
+    restaurant14 = Restaurant(
+        name='Tex-Mex Grill',
+        user_id=7,
+        address='456 Chili Road',
+        city='Austin',
+        state='Texas',
+        hours='11:00 - 22:00',
+        image_url='https://example.com/tex-mex-grill.jpg'
+    )
+    restaurant15 = Restaurant(
+        name='Szechuan Delights',
+        user_id=8,
+        address='888 Spicy Lane',
+        city='San Francisco',
+        state='California',
+        hours='12:30 - 20:30',
+        image_url='https://example.com/szechuan-delights.jpg'
+    )
+    restaurant16 = Restaurant(
+        name='Mediterranean Breeze',
+        user_id=8,
+        address='789 Olive Avenue',
+        city='Miami',
+        state='Florida',
+        hours='10:00 - 21:00',
+        image_url='https://example.com/mediterranean-breeze.jpg'
+    )
+    restaurant17 = Restaurant(
+        name='Burger Haven',
+        user_id=9,
+        address='222 Burger Street',
+        city='Denver',
+        state='Colorado',
+        hours='11:30 - 22:30',
+        image_url='https://example.com/burger-haven.jpg'
+    )
+    restaurant18 = Restaurant(
+        name='Sushi Sensation',
+        user_id=9,
+        address='555 Sushi Road',
+        city='Los Angeles',
+        state='California',
+        hours='18:00 - 00:00',
+        image_url='https://example.com/sushi-sensation.jpg'
+    )
+    restaurant19 = Restaurant(
+        name='Casa de Tapas',
+        user_id=10,
+        address='123 Tapas Lane',
+        city='New York',
+        state='New York',
+        hours='16:00 - 23:00',
+        image_url='https://example.com/casa-de-tapas.jpg'
+    )
+    restaurant20 = Restaurant(
+        name='Garden Grill',
+        user_id=10,
+        address='999 Greenery Road',
+        city='Portland',
+        state='Oregon',
+        hours='09:00 - 20:00',
+        image_url='https://example.com/garden-grill.jpg'
+    )
 
     db.session.add(restaurant1)
     db.session.add(restaurant2)
@@ -63,6 +189,22 @@ def seed_restaurants():
     db.session.add(restaurant4)
     db.session.add(restaurant5)
     db.session.add(restaurant6)
+    db.session.add(restaurant7)
+    db.session.add(restaurant8)
+    db.session.add(restaurant9)
+    db.session.add(restaurant10)
+    db.session.add(restaurant11)
+    db.session.add(restaurant12)
+    db.session.add(restaurant13)
+    db.session.add(restaurant14)
+    db.session.add(restaurant15)
+    db.session.add(restaurant16)
+    db.session.add(restaurant17)
+    db.session.add(restaurant18)
+    db.session.add(restaurant19)
+    db.session.add(restaurant20)
+
+
     db.session.commit()
 
 def undo_restaurants():
