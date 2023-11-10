@@ -57,13 +57,13 @@ def seed_restaurants():
         image_url="https://media.istockphoto.com/id/1010677810/photo/traditional-uzbek-oriental-cuisine-uzbek-family-table-from-different-dishes-for-the-new-year.jpg?s=612x612&w=0&k=20&c=bCezyNqQUeYWFbodrf2kloJJBPPOeXbr4Fwd6B-wfxM="
     )
     restaurant7 = Restaurant(
-        name='Adel Halal',
+        name='The Halal Guys',
         user_id=3,
-        address="81st Street",
+        address="84st Street",
         city="New York",
         state="New York",
         hours="09:00 - 18:00",
-        image_url="https://media.istockphoto.com/id/1010677810/photo/traditional-uzbek-oriental-cuisine-uzbek-family-table-from-different-dishes-for-the-new-year.jpg?s=612x612&w=0&k=20&c=bCezyNqQUeYWFbodrf2kloJJBPPOeXbr4Fwd6B-wfxM="
+        image_url="https://www.vmcdn.ca/f/files/via/images/food/halal-guys-chicken-platter.jpg"
     )
     restaurant8 = Restaurant(
         name='Taste of Tuscany',
@@ -72,7 +72,7 @@ def seed_restaurants():
         city='San Francisco',
         state='California',
         hours='11:30 - 21:00',
-        image_url='https://example.com/taste-of-tuscany.jpg'
+        image_url='https://tasteoftuscanyrestaurant.com/logo.png'
     )
     restaurant9 = Restaurant(
         name='Spice Palace',
@@ -81,7 +81,7 @@ def seed_restaurants():
         city='Houston',
         state='Texas',
         hours='12:00 - 22:00',
-        image_url='https://example.com/spice-palace.jpg'
+        image_url='https://f6fd435a0f2c19a33595-43a7480e297bd90c3a25677214011498.ssl.cf1.rackcdn.com/149424979488557998331ml.jpeg'
     )
     restaurant10 = Restaurant(
         name='Sushi Delight',
@@ -90,7 +90,7 @@ def seed_restaurants():
         city='Los Angeles',
         state='California',
         hours='17:00 - 23:00',
-        image_url='https://example.com/sushi-delight.jpg'
+        image_url='https://s3-media0.fl.yelpcdn.com/bphoto/QTzMjI9Nb_PNBHVFZLXXcQ/348s.jpg'
     )
     restaurant11 = Restaurant(
         name='Mama Mia Pizzeria',
@@ -99,7 +99,7 @@ def seed_restaurants():
         city='Chicago',
         state='Illinois',
         hours='11:00 - 20:00',
-        image_url='https://example.com/mama-mia-pizzeria.jpg'
+        image_url='https://s3-media0.fl.yelpcdn.com/bphoto/4SF8W7t1WdG6JZI0tcGsRw/348s.jpg'
     )
     restaurant12 = Restaurant(
         name='The Veggie Patch',
@@ -108,7 +108,7 @@ def seed_restaurants():
         city='Seattle',
         state='Washington',
         hours='09:30 - 19:30',
-        image_url='https://example.com/veggie-patch.jpg'
+        image_url='https://s3-media0.fl.yelpcdn.com/bphoto/-zteEwrENhOLZdJB9faMCA/348s.jpg'
     )
     restaurant13 = Restaurant(
         name='Café Parisienne',
@@ -117,7 +117,7 @@ def seed_restaurants():
         city='New Orleans',
         state='Louisiana',
         hours='08:00 - 18:00',
-        image_url='https://example.com/cafe-parisienne.jpg'
+        image_url='https://s3-media0.fl.yelpcdn.com/bphoto/QMer37GkyV2LSLuATCKtzg/348s.jpg'
     )
     restaurant14 = Restaurant(
         name='Tex-Mex Grill',
@@ -126,7 +126,7 @@ def seed_restaurants():
         city='Austin',
         state='Texas',
         hours='11:00 - 22:00',
-        image_url='https://example.com/tex-mex-grill.jpg'
+        image_url='https://s3-media0.fl.yelpcdn.com/bphoto/Lb_5PXtHqOGQ5MU1fxWKdw/348s.jpg'
     )
     restaurant15 = Restaurant(
         name='Szechuan Delights',
@@ -135,7 +135,7 @@ def seed_restaurants():
         city='San Francisco',
         state='California',
         hours='12:30 - 20:30',
-        image_url='https://example.com/szechuan-delights.jpg'
+        image_url='https://s3-media0.fl.yelpcdn.com/bphoto/QkFc0xVxCJQlknsN5L-UCg/348s.jpg'
     )
     restaurant16 = Restaurant(
         name='Mediterranean Breeze',
@@ -144,7 +144,7 @@ def seed_restaurants():
         city='Miami',
         state='Florida',
         hours='10:00 - 21:00',
-        image_url='https://example.com/mediterranean-breeze.jpg'
+        image_url='https://s3-media0.fl.yelpcdn.com/bphoto/q4Tltz_aRYTaLx4maMctOg/348s.jpg'
     )
     restaurant17 = Restaurant(
         name='Burger Haven',
@@ -153,7 +153,7 @@ def seed_restaurants():
         city='Denver',
         state='Colorado',
         hours='11:30 - 22:30',
-        image_url='https://example.com/burger-haven.jpg'
+        image_url='https://s3-media0.fl.yelpcdn.com/bphoto/poYss8QEZNZI-gFpAef5vA/348s.jpg'
     )
     restaurant18 = Restaurant(
         name='Sushi Sensation',
@@ -162,7 +162,7 @@ def seed_restaurants():
         city='Los Angeles',
         state='California',
         hours='18:00 - 00:00',
-        image_url='https://example.com/sushi-sensation.jpg'
+        image_url='https://s3-media0.fl.yelpcdn.com/bphoto/nw9qtSZQX5D5krxmAfwY_Q/348s.jpg'
     )
     restaurant19 = Restaurant(
         name='Casa de Tapas',
@@ -171,7 +171,7 @@ def seed_restaurants():
         city='New York',
         state='New York',
         hours='16:00 - 23:00',
-        image_url='https://example.com/casa-de-tapas.jpg'
+        image_url='https://s3-media0.fl.yelpcdn.com/bphoto/-EDbx1l6I0F3wiSBelYwrw/348s.jpg'
     )
     restaurant20 = Restaurant(
         name='Garden Grill',
@@ -180,7 +180,7 @@ def seed_restaurants():
         city='Portland',
         state='Oregon',
         hours='09:00 - 20:00',
-        image_url='https://example.com/garden-grill.jpg'
+        image_url='https://s3-media0.fl.yelpcdn.com/bphoto/_FJBz-sIFhh-2Tb5JOu74Q/348s.jpg'
     )
 
     db.session.add(restaurant1)
