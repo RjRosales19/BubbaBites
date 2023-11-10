@@ -52,9 +52,9 @@ const UpdateItem = ({item}) => {
 
     return(
         <>
-            <div>
+            <div className="main-create-restaurant-container">
                 <h1>Update Item</h1>
-                <div>
+                <div className="create-menu-item-form-container">
                     <form onSubmit={handleUpdateItem}>
                         <ul>{Object.values(errors).map(error => (<li className='errors'>{error}</li>))}</ul>
 
@@ -105,6 +105,7 @@ const UpdateItem = ({item}) => {
                                 type="text"
                                 value={description}
                                 required
+                                className="create-item-description-input"
                                 onChange={ (e) => setDescription(e.target.value)}
                                 placeholder='Description'
                                 minLength='10'
@@ -114,7 +115,7 @@ const UpdateItem = ({item}) => {
                             </label>
                         </div>
 
-                        <button type="submit">Update Item</button>
+                        <button className='create-new-menu-item-button' type="submit">Update Item</button>
 
                     </form>
                 </div>
