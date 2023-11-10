@@ -15,7 +15,7 @@ import UpdateItem from "../UpdateItem/UpdateItem"
 const SingleRestaurant = () => {
     const dispatch = useDispatch()
     const { restaurantId } = useParams()
-    const user = useSelector( state=> state.session.user)
+    let user = useSelector( state=> state.session.user)
     const restaurant = useSelector( state => state.restaurants.singleRestaurant )
     const reviews = Object.values(useSelector(state => state.reviews.allReviews))
     const items = useSelector(state => state.items.allItems)
@@ -42,8 +42,8 @@ const SingleRestaurant = () => {
     }, [dispatch, restaurantId])
 
     if(!user) {
-        // const user = 0
-        const user = false
+        let user = 0
+        // const user = false
 
     }
     if(reviews.length < 0) {
@@ -103,7 +103,8 @@ const SingleRestaurant = () => {
                 {reviews.map((review) => { return(
                     <div className="review-information-container">
                         <div>
-                            {review.user_id === user.id ? user?.username : review.user_id}  · <i className="fa fa-star" style={{color: "rgb(24, 108, 104)"}}></i>{review.star_rating.toFixed(1)} ·  {newCurrentDate}
+                            {/* {review.user_id === user.id ? user?.username : review.user_id} */}
+                            {review.user_id}  · <i className="fa fa-star" style={{color: "rgb(24, 108, 104)"}}></i>{review.star_rating.toFixed(1)} ·  {newCurrentDate}
                         </div>
                         <div>{review.text}</div>
                         {user && (user.id === review.user_id) &&
