@@ -9,6 +9,13 @@
     gap: 1rem;
 }
 
+.restaurant-tile-container:hover {
+    border: black 1px solid;
+    background-color: white;
+    box-shadow: -1em 0 .4em rgb(24, 108, 104);
+
+}
+
 .restaurant-tile-container{
     display:grid;
     width: 25%;
@@ -17,6 +24,7 @@
     border-radius: 5%;
     background-color: rgb(24, 108, 104);
 }
+
 
 .restaurant-tile-container > a{
     color: black;
@@ -39,3 +47,4 @@
     flex-direction: row;
     justify-content: space-evenly;
 }
+

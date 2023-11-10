@@ -76,9 +76,9 @@ const SingleRestaurant = () => {
                             <div>{ restaurant.hours }</div>
                         </div>
 
-                        {/* <div>Reviews Average:{ reviewsAvg.toFixed(1) }</div> */}
+                        <div>{reviews.length} public reviews</div>
                         <div>
-                            {/* <div>Total Reviews { reviews.length}</div> */}
+                            { reviewsAvg.toFixed(1) } out of 5 <i className="fa fa-star" style={{color: "rgb(255,255,255)"}}></i>
                         </div>
                     </div>
                 </div>
@@ -86,6 +86,9 @@ const SingleRestaurant = () => {
                 <div className="ratings-rewiews-container">
                     <h3>Ratings & Reviews</h3>
                     <div>{reviews.length} public reviews</div>
+                    <div>
+                        { reviewsAvg.toFixed(1) } out of 5 <i className="fa fa-star" style={{color: "rgb(24, 108, 104)"}}></i>
+                    </div>
                     {user && !(restaurantOwner || reviewOwner) &&
                         <div>
                             <OpenModalButton
