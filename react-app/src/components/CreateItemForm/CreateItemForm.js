@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom"
 import { useModal } from "../../context/Modal"
 import { thunkCreateItem } from "../../store/items"
 import { useDispatch, useSelector } from "react-redux"
-
+import './CreateItemForm.css'
 const CreateItemForm = () => {
     const dispatch = useDispatch()
     const history = useHistory()
@@ -48,9 +48,9 @@ const CreateItemForm = () => {
 
     return (
         <>
-            <div>
+            <div className="main-create-restaurant-container">
                 <h1>Add a Menu Item</h1>
-                <div>
+                <div className="create-menu-item-form-container">
                     <form onSubmit={handleCreateItem}>
                         <ul>{Object.values(errors).map(error => <li className='errors'>{error}</li>)}</ul>
 
@@ -100,6 +100,7 @@ const CreateItemForm = () => {
                                 <textarea
                                 type="text"
                                 value={description}
+                                className="create-item-description-input"
                                 required
                                 onChange={ (e) => setDescription(e.target.value)}
                                 placeholder='Description'
@@ -110,7 +111,7 @@ const CreateItemForm = () => {
                             </label>
                         </div>
 
-                        <button type="submit">Create new Item</button>
+                        <button className='create-new-menu-item-button' type="submit">Create new Item</button>
 
                     </form>
                 </div>
