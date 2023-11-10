@@ -146,6 +146,8 @@ const SingleRestaurant = () => {
                                     <h4>${item.price}</h4>
                                 </div>
                                 <div>
+                                {user && (restaurant.user_id === user.id) &&
+                                (<>
                                     <OpenModalButton
                                         buttonText='Update'
                                         buttonStyling='update-restaurant-button'
@@ -156,6 +158,8 @@ const SingleRestaurant = () => {
                                         buttonStyling='delete-restaurant-button'
                                         modalComponent={<DeleteItem item={item}/>}
                                     />
+                                    </>)
+                                }
                                 </div>
                             </>
                         )
