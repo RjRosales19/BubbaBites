@@ -15,6 +15,7 @@ class Item(db.Model):
     image_url = db.Column(db.String, nullable=False)
 
     restaurant = db.relationship('Restaurant', back_populates='item')
+    cart = db.relationship('Cart', back_populates='item')
 
     def to_dict(self):
         return {
@@ -25,4 +26,3 @@ class Item(db.Model):
             'price': self.price,
             'image_url': self.image_url
         }
-
